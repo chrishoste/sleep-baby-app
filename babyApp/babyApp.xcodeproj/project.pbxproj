@@ -16,6 +16,7 @@
 		EA27718C227F53E500016850 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA27718A227F53E500016850 /* LaunchScreen.storyboard */; };
 		EA277197227F53E500016850 /* babyAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA277196227F53E500016850 /* babyAppTests.swift */; };
 		EA2771A2227F53E500016850 /* babyAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2771A1227F53E500016850 /* babyAppUITests.swift */; };
+		EA2D8734227F866B005C4186 /* MelodyLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2D8733227F866B005C4186 /* MelodyLightViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		EA27719D227F53E500016850 /* babyAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = babyAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA2771A1227F53E500016850 /* babyAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = babyAppUITests.swift; sourceTree = "<group>"; };
 		EA2771A3227F53E500016850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA2D8733227F866B005C4186 /* MelodyLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodyLightViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				EA277188227F53E500016850 /* Assets.xcassets */,
 				EA27718A227F53E500016850 /* LaunchScreen.storyboard */,
 				EA27718D227F53E500016850 /* Info.plist */,
+				EA2D8733227F866B005C4186 /* MelodyLightViewController.swift */,
 			);
 			path = babyApp;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA277184227F53E400016850 /* ViewController.swift in Sources */,
+				EA2D8734227F866B005C4186 /* MelodyLightViewController.swift in Sources */,
 				EA277182227F53E400016850 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

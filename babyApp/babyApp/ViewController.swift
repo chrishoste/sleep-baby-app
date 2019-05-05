@@ -50,6 +50,9 @@ class ViewController: UIViewController {
 
 		view.backgroundColor = .red
 
+		view1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTab(_:))))
+		view2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTab(_:))))
+
 		subView1.constraintSquare(spacing: 16, screenWitdth: view.frame.width, numberOfItems: 3)
 		subView2.constraintSquare(spacing: 16, screenWitdth: view.frame.width, numberOfItems: 3)
 		subView3.constraintSquare(spacing: 16, screenWitdth: view.frame.width, numberOfItems: 3)
@@ -76,6 +79,24 @@ class ViewController: UIViewController {
 		stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
 	}
 
+	@objc func handleTab(_ sender: UITapGestureRecognizer) {
+
+		let melodyLightViewController = MelodyLightViewController(frame: ((sender.view?.superview?.convert(sender.view!.frame, to: self.view))!))
+		melodyLightViewController.delegate = self
+		melodyLightViewController.modalPresentationStyle = .overCurrentContext
+
+		self.present(melodyLightViewController, animated: false) {
+			sender.view?.alpha = 0
+		}
+	}
+
+}
+
+extension ViewController: MelodyLightViewControllerDelegate {
+	func didClose() {
+		view1.alpha = 1
+		view2.alpha = 1
+	}
 }
 
 extension UIView {
