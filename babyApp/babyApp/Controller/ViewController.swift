@@ -45,15 +45,15 @@ class ViewController: UIViewController {
 	}
 
 	fileprivate func setupView() {
-		let titleStackView = CustomStackView(arrangedSubviews: [emptyButton, TitleLabel(text: "Baby App"), settingsButton], spacing: 16)
+		let titleStackView = CustomStackView(arrangedSubviews: [emptyButton, TitleLabel(key: .titleBabyApp), settingsButton], spacing: 16)
 
 		let topStackView = CustomStackView(arrangedSubviews: [
-			SubLabel(text: "Melody & Light show"),
+			SubLabel(key: .titleMelodySound),
 			CustomStackView(arrangedSubviews: generateMelodyViews(melodySounds), axis: .vertical, spacing: 16, distribution: .fillEqually)
 			], axis: .vertical, spacing: 4)
 
 		let subStackView = CustomStackView(arrangedSubviews: [
-			SubLabel(text: "Quick sounds"),
+			SubLabel(key: .titleQuickSound),
 			CustomStackView(arrangedSubviews: generateQuickSoundViews(quickSounds), spacing: 16, distribution: .fillEqually)
 			], axis: .vertical, spacing: 4)
 

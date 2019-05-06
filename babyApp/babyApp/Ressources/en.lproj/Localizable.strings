@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  babyApp
+
+  Created by Christophe Hoste on 06.05.19.
+  Copyright © 2019 hoste. All rights reserved.
+*/
+
+"titleBabyApp" = "Baby App English";
+"titleMelodySound" = "Melody und light show";
+"titleQuickSound" = "Quick sounds";

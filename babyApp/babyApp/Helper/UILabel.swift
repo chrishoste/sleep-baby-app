@@ -11,9 +11,9 @@ import UIKit
 
 class SubLabel: UILabel {
 
-	init(text: String) {
+	init(key: LocalizationKey) {
 		super.init(frame: .zero)
-		self.text = text
+		self.text = localized(key)
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -23,9 +23,9 @@ class SubLabel: UILabel {
 
 class TitleLabel: UILabel {
 
-	init(text: String) {
+	init(key: LocalizationKey) {
 		super.init(frame: .zero)
-		self.text = text
+		self.text = localized(key)
 		self.textAlignment = .center
 	}
 
