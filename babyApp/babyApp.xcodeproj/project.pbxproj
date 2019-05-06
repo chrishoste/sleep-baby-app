@@ -17,6 +17,9 @@
 		EA277197227F53E500016850 /* babyAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA277196227F53E500016850 /* babyAppTests.swift */; };
 		EA2771A2227F53E500016850 /* babyAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2771A1227F53E500016850 /* babyAppUITests.swift */; };
 		EA2D8734227F866B005C4186 /* MelodyLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2D8733227F866B005C4186 /* MelodyLightViewController.swift */; };
+		EAC6565A2280BA7E003DF5AE /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC656592280BA7E003DF5AE /* UIView+Layout.swift */; };
+		EAC6565E2280BBE9003DF5AE /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC6565D2280BBE9003DF5AE /* UIStackView.swift */; };
+		EAC656602280CB89003DF5AE /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC6565F2280CB89003DF5AE /* UILabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		EA2771A1227F53E500016850 /* babyAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = babyAppUITests.swift; sourceTree = "<group>"; };
 		EA2771A3227F53E500016850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA2D8733227F866B005C4186 /* MelodyLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodyLightViewController.swift; sourceTree = "<group>"; };
+		EAC656592280BA7E003DF5AE /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		EAC6565D2280BBE9003DF5AE /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
+		EAC6565F2280CB89003DF5AE /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,12 +143,11 @@
 		EA277180227F53E400016850 /* babyApp */ = {
 			isa = PBXGroup;
 			children = (
-				EA277181227F53E400016850 /* AppDelegate.swift */,
-				EA277183227F53E400016850 /* ViewController.swift */,
-				EA277188227F53E500016850 /* Assets.xcassets */,
-				EA27718A227F53E500016850 /* LaunchScreen.storyboard */,
 				EA27718D227F53E500016850 /* Info.plist */,
-				EA2D8733227F866B005C4186 /* MelodyLightViewController.swift */,
+				EA277181227F53E400016850 /* AppDelegate.swift */,
+				EAC656562280BA16003DF5AE /* Helper */,
+				EAC6565C2280BAE6003DF5AE /* Controller */,
+				EAC6565B2280BAA8003DF5AE /* Ressources */,
 			);
 			path = babyApp;
 			sourceTree = "<group>";
@@ -163,6 +168,34 @@
 				EA2771A3227F53E500016850 /* Info.plist */,
 			);
 			path = babyAppUITests;
+			sourceTree = "<group>";
+		};
+		EAC656562280BA16003DF5AE /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				EAC656592280BA7E003DF5AE /* UIView+Layout.swift */,
+				EAC6565D2280BBE9003DF5AE /* UIStackView.swift */,
+				EAC6565F2280CB89003DF5AE /* UILabel.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		EAC6565B2280BAA8003DF5AE /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				EA27718A227F53E500016850 /* LaunchScreen.storyboard */,
+				EA277188227F53E500016850 /* Assets.xcassets */,
+			);
+			path = Ressources;
+			sourceTree = "<group>";
+		};
+		EAC6565C2280BAE6003DF5AE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EA277183227F53E400016850 /* ViewController.swift */,
+				EA2D8733227F866B005C4186 /* MelodyLightViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,8 +420,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA277184227F53E400016850 /* ViewController.swift in Sources */,
+				EAC6565E2280BBE9003DF5AE /* UIStackView.swift in Sources */,
 				EA2D8734227F866B005C4186 /* MelodyLightViewController.swift in Sources */,
 				EA277182227F53E400016850 /* AppDelegate.swift in Sources */,
+				EAC656602280CB89003DF5AE /* UILabel.swift in Sources */,
+				EAC6565A2280BA7E003DF5AE /* UIView+Layout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

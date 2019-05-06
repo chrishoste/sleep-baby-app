@@ -17,7 +17,7 @@ class MelodyLightViewController: UIViewController {
 
 	let view1: UIView = {
 		let view = UIView()
-		view.backgroundColor = .blue
+		view.backgroundColor = .lightGray
 		return view
 	}()
 
@@ -66,7 +66,7 @@ class MelodyLightViewController: UIViewController {
 	func animateView() {
 		self.view.layoutIfNeeded()
 
-		UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+		UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: {
 
 			self.viewsTopAnchor?.constant = 0
 			self.viewsLeadingAnchor?.constant = 0
@@ -81,7 +81,7 @@ class MelodyLightViewController: UIViewController {
 	@objc func handleClose(_ sender: UITapGestureRecognizer) {
 		self.view.layoutIfNeeded()
 
-		UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+		UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 5, options: .curveEaseOut, animations: {
 
 			self.viewsTopAnchor?.constant = self.smallViewFrame.origin.y
 			self.viewsLeadingAnchor?.constant = self.smallViewFrame.origin.x
