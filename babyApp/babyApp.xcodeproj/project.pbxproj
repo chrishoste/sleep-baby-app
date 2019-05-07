@@ -22,6 +22,8 @@
 		EAC656602280CB89003DF5AE /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC6565F2280CB89003DF5AE /* UILabel.swift */; };
 		EAC656632280CF56003DF5AE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EAC656652280CF56003DF5AE /* Localizable.strings */; };
 		EAC6566B2280D0DA003DF5AE /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC6566A2280D0DA003DF5AE /* Localization.swift */; };
+		EAD17DAB22819CB400211F42 /* SlideUpMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD17DAA22819CB400211F42 /* SlideUpMenuController.swift */; };
+		EAD17DAE2281A31200211F42 /* ThumbSlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD17DAD2281A31200211F42 /* ThumbSlidingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		EAC656682280CF84003DF5AE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		EAC656692280CF84003DF5AE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EAC6566A2280D0DA003DF5AE /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		EAD17DAA22819CB400211F42 /* SlideUpMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpMenuController.swift; sourceTree = "<group>"; };
+		EAD17DAD2281A31200211F42 /* ThumbSlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbSlidingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,7 @@
 		EA277180227F53E400016850 /* babyApp */ = {
 			isa = PBXGroup;
 			children = (
+				EAD17DAC2281A2E000211F42 /* Views */,
 				EA27718D227F53E500016850 /* Info.plist */,
 				EA277181227F53E400016850 /* AppDelegate.swift */,
 				EAC656562280BA16003DF5AE /* Helper */,
@@ -204,8 +209,17 @@
 			children = (
 				EA277183227F53E400016850 /* ViewController.swift */,
 				EA2D8733227F866B005C4186 /* MelodyLightViewController.swift */,
+				EAD17DAA22819CB400211F42 /* SlideUpMenuController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		EAD17DAC2281A2E000211F42 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EAD17DAD2281A31200211F42 /* ThumbSlidingView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,8 +449,10 @@
 				EA277184227F53E400016850 /* ViewController.swift in Sources */,
 				EAC6565E2280BBE9003DF5AE /* UIStackView.swift in Sources */,
 				EAC6566B2280D0DA003DF5AE /* Localization.swift in Sources */,
+				EAD17DAE2281A31200211F42 /* ThumbSlidingView.swift in Sources */,
 				EA2D8734227F866B005C4186 /* MelodyLightViewController.swift in Sources */,
 				EA277182227F53E400016850 /* AppDelegate.swift in Sources */,
+				EAD17DAB22819CB400211F42 /* SlideUpMenuController.swift in Sources */,
 				EAC656602280CB89003DF5AE /* UILabel.swift in Sources */,
 				EAC6565A2280BA7E003DF5AE /* UIView+Layout.swift in Sources */,
 			);

@@ -7,5 +7,9 @@
 */
 
 "titleBabyApp" = "Baby App English";
-"titleMelodySound" = "Melody und light show";
-"titleQuickSound" = "Quick sounds";
+"titleMelodySound" = "Melody & night light";
+"titleQuickSound" = "Everyday sounds";
+
+"quickSoundShower" = "Shower";
+"quickSoundVacuum" = "Vacuum";
+"quickSoundWashingMachine" = "Washing machine";

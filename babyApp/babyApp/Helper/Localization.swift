@@ -17,4 +17,8 @@ public enum LocalizationKey: String {
 	case titleBabyApp
 	case titleMelodySound
 	case titleQuickSound
+
+    case quickSoundShower
+    case quickSoundVacuum
+    case quickSoundWashingMachine
 }

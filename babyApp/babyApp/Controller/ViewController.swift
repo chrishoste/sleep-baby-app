@@ -18,6 +18,7 @@ struct QuickSound {
 
 class ViewController: UIViewController {
 
+    // Staubsauger, Spühlmaschine/Waschmaschine, Dusche
 	let quickSounds = [QuickSound(identifier: 1), QuickSound(identifier: 2), QuickSound(identifier: 3)]
 	let melodySounds = [MelodySound(identifier: 1), MelodySound(identifier: 2)]
 
@@ -25,6 +26,7 @@ class ViewController: UIViewController {
 		let button = UIButton()
 		button.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, size: .init(width: 44, height: 44))
 		button.setImage(#imageLiteral(resourceName: "settings"), for: .normal)
+        button.addTarget(self, action: #selector(openSettings), for: .touchUpInside)
 		return button
 	}()
 
@@ -102,6 +104,13 @@ class ViewController: UIViewController {
 
 		return views
 	}
+
+    @objc func openSettings() {
+        let menuController = SlideUpMenuController()
+        menuController.modalPresentationStyle = .overCurrentContext
+
+        self.present(menuController, animated: false)
+    }
 
 }
 
