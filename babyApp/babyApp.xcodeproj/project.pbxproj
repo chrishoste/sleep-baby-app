@@ -17,6 +17,9 @@
 		EA277197227F53E500016850 /* babyAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA277196227F53E500016850 /* babyAppTests.swift */; };
 		EA2771A2227F53E500016850 /* babyAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2771A1227F53E500016850 /* babyAppUITests.swift */; };
 		EA2D8734227F866B005C4186 /* MelodyLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2D8733227F866B005C4186 /* MelodyLightViewController.swift */; };
+		EAA4F554228345D80016C552 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA4F553228345D80016C552 /* SettingsViewController.swift */; };
+		EAA4F55622834EE80016C552 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA4F55522834EE80016C552 /* Constant.swift */; };
+		EAA4F5582284776B0016C552 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAA4F5572284776B0016C552 /* Settings.storyboard */; };
 		EAC6565A2280BA7E003DF5AE /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC656592280BA7E003DF5AE /* UIView+Layout.swift */; };
 		EAC6565E2280BBE9003DF5AE /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC6565D2280BBE9003DF5AE /* UIStackView.swift */; };
 		EAC656602280CB89003DF5AE /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC6565F2280CB89003DF5AE /* UILabel.swift */; };
@@ -66,6 +69,9 @@
 		EA2771A1227F53E500016850 /* babyAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = babyAppUITests.swift; sourceTree = "<group>"; };
 		EA2771A3227F53E500016850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA2D8733227F866B005C4186 /* MelodyLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodyLightViewController.swift; sourceTree = "<group>"; };
+		EAA4F553228345D80016C552 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		EAA4F55522834EE80016C552 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		EAA4F5572284776B0016C552 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		EAC656592280BA7E003DF5AE /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		EAC6565D2280BBE9003DF5AE /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		EAC6565F2280CB89003DF5AE /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -183,6 +189,15 @@
 			path = babyAppUITests;
 			sourceTree = "<group>";
 		};
+		EAA4F559228487310016C552 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				EAA4F553228345D80016C552 /* SettingsViewController.swift */,
+				EAA4F5572284776B0016C552 /* Settings.storyboard */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		EAC656562280BA16003DF5AE /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +205,7 @@
 				EAC6565D2280BBE9003DF5AE /* UIStackView.swift */,
 				EAC6565F2280CB89003DF5AE /* UILabel.swift */,
 				EAC6566A2280D0DA003DF5AE /* Localization.swift */,
+				EAA4F55522834EE80016C552 /* Constant.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -207,6 +223,7 @@
 		EAC6565C2280BAE6003DF5AE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EAA4F559228487310016C552 /* Settings */,
 				EA277183227F53E400016850 /* ViewController.swift */,
 				EA2D8733227F866B005C4186 /* MelodyLightViewController.swift */,
 				EAD17DAA22819CB400211F42 /* SlideUpMenuController.swift */,
@@ -335,6 +352,7 @@
 				EA27718C227F53E500016850 /* LaunchScreen.storyboard in Resources */,
 				EAC656632280CF56003DF5AE /* Localizable.strings in Resources */,
 				EA277189227F53E500016850 /* Assets.xcassets in Resources */,
+				EAA4F5582284776B0016C552 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,10 +467,12 @@
 				EA277184227F53E400016850 /* ViewController.swift in Sources */,
 				EAC6565E2280BBE9003DF5AE /* UIStackView.swift in Sources */,
 				EAC6566B2280D0DA003DF5AE /* Localization.swift in Sources */,
+				EAA4F554228345D80016C552 /* SettingsViewController.swift in Sources */,
 				EAD17DAE2281A31200211F42 /* ThumbSlidingView.swift in Sources */,
 				EA2D8734227F866B005C4186 /* MelodyLightViewController.swift in Sources */,
 				EA277182227F53E400016850 /* AppDelegate.swift in Sources */,
 				EAD17DAB22819CB400211F42 /* SlideUpMenuController.swift in Sources */,
+				EAA4F55622834EE80016C552 /* Constant.swift in Sources */,
 				EAC656602280CB89003DF5AE /* UILabel.swift in Sources */,
 				EAC6565A2280BA7E003DF5AE /* UIView+Layout.swift in Sources */,
 			);

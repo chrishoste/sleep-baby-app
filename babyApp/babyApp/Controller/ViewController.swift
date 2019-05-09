@@ -19,10 +19,11 @@ struct QuickSound {
 class ViewController: UIViewController {
 
     // Staubsauger, Spühlmaschine/Waschmaschine, Dusche
-	let quickSounds = [QuickSound(identifier: 1), QuickSound(identifier: 2), QuickSound(identifier: 3)]
-	let melodySounds = [MelodySound(identifier: 1), MelodySound(identifier: 2)]
+	private let quickSounds1 = [QuickSound(identifier: 1), QuickSound(identifier: 2)]
+    private let quickSounds2 = [QuickSound(identifier: 3), QuickSound(identifier: 4)]
+	private let melodySounds = [MelodySound(identifier: 1), MelodySound(identifier: 2)]
 
-	let settingsButton: UIButton = {
+	private let settingsButton: UIButton = {
 		let button = UIButton()
 		button.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, size: .init(width: 44, height: 44))
 		button.setImage(#imageLiteral(resourceName: "settings"), for: .normal)
@@ -30,13 +31,13 @@ class ViewController: UIViewController {
 		return button
 	}()
 
-	let emptyButton: UIButton = {
+	private let emptyButton: UIButton = {
 		let button = UIButton()
 		button.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, size: .init(width: 44, height: 44))
 		return button
 	}()
 
-	var lastTabedView: UIView?
+	private var lastTabedView: UIView?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -51,21 +52,27 @@ class ViewController: UIViewController {
 
 		let topStackView = CustomStackView(arrangedSubviews: [
 			SubLabel(key: .titleMelodySound),
-			CustomStackView(arrangedSubviews: generateMelodyViews(melodySounds), axis: .vertical, spacing: 16, distribution: .fillEqually)
+			CustomStackView(arrangedSubviews: generateMelodyViews(melodySounds), axis: .vertical, spacing: Constant.spacing, distribution: .fillEqually)
 			], axis: .vertical, spacing: 4)
 
 		let subStackView = CustomStackView(arrangedSubviews: [
-			SubLabel(key: .titleQuickSound),
-			CustomStackView(arrangedSubviews: generateQuickSoundViews(quickSounds), spacing: 16, distribution: .fillEqually)
-			], axis: .vertical, spacing: 4)
+                SubLabel(key: .titleQuickSound),
+                CustomStackView(arrangedSubviews: [
+                    CustomStackView(arrangedSubviews: generateQuickSoundViews(quickSounds1), spacing: Constant.spacing, distribution: .fillEqually),
+                    CustomStackView(arrangedSubviews: generateQuickSoundViews(quickSounds2), spacing: Constant.spacing, distribution: .fillEqually)
+                    ], axis: .vertical, spacing: Constant.spacing, distribution: .fillEqually)
+            ], axis: .vertical, spacing: 4)
 
-		let stackView = CustomStackView(arrangedSubviews: [titleStackView, topStackView, subStackView], axis: .vertical, spacing: 16)
+		let stackView = CustomStackView(arrangedSubviews: [
+                titleStackView,
+                CustomStackView(arrangedSubviews: [topStackView, subStackView], axis: .vertical, spacing: Constant.spacing, distribution: .fillEqually)
+            ], axis: .vertical, spacing: Constant.spacing)
 
 		view.addSubview(stackView)
-		stackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 8, left: 16, bottom: 8, right: 16))
+		stackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 8, left: 16, bottom: 16, right: 16))
 	}
 
-	@objc func handleTab(_ sender: UITapGestureRecognizer) {
+	@objc private func handleTab(_ sender: UITapGestureRecognizer) {
 
 		let melodyLightViewController = MelodyLightViewController(frame: ((sender.view?.superview?.convert(sender.view!.frame, to: self.view))!))
 		melodyLightViewController.delegate = self
@@ -77,7 +84,7 @@ class ViewController: UIViewController {
 		}
 	}
 
-	func generateMelodyViews(_ melodys: [MelodySound]) -> [UIView] {
+	private func generateMelodyViews(_ melodys: [MelodySound]) -> [UIView] {
 		var views: [UIView] = []
 
 		for _ in melodys {
@@ -91,21 +98,22 @@ class ViewController: UIViewController {
 		return views
 	}
 
-	func generateQuickSoundViews(_ sounds: [QuickSound]) -> [UIView] {
+	private func generateQuickSoundViews(_ sounds: [QuickSound]) -> [UIView] {
 		var views: [UIView] = []
 
 		for _ in sounds {
 			let soundView = UIView()
+            views.append(soundView)
 			soundView.layer.cornerRadius = 10
 			soundView.backgroundColor = .lightGray
-			soundView.constraintSquare(spacing: 16, screenWitdth: view.frame.width, count: sounds.count)
+            //soundView.constraintSquare(spacing: Constant.spacing, fullWidth: (view.frame.width - 32), count: sounds.count)
 			views.append(soundView)
 		}
 
 		return views
 	}
 
-    @objc func openSettings() {
+    @objc private func openSettings() {
         let menuController = SlideUpMenuController()
         menuController.modalPresentationStyle = .overCurrentContext
 
@@ -121,10 +129,11 @@ extension ViewController: MelodyLightViewControllerDelegate {
 }
 
 extension UIView {
-	func constraintSquare(spacing: CGFloat, screenWitdth: CGFloat, count: Int) {
+	func constraintSquare(spacing: CGFloat, fullWidth: CGFloat, count: Int) {
 		let numberOfViews = CGFloat(count)
-		let size = (screenWitdth - (spacing*(numberOfViews+1))) / numberOfViews
+		let size = (fullWidth - (spacing * (numberOfViews-1))) / numberOfViews
 
-		self.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, size: .init(width: size, height: size))
+		self.constrainWidth(constant: size)
+        self.constrainHeight(constant: size)
 	}
 }

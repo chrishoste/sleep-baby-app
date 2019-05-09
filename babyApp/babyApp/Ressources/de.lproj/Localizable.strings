@@ -6,6 +6,13 @@
   Copyright © 2019 hoste. All rights reserved.
 */
 
+"done" = "Fertig";
+"ok" = "Ok";
+"yes" = "Ja";
+"no" = "Nein";
+
+"titleSettings" = "Einstellungen";
+
 "titleBabyApp" = "Baby App Deutsch";
 "titleMelodySound" = "Melodie & Nachtlicht";
 "titleQuickSound" = "Alltagsgeräusche";

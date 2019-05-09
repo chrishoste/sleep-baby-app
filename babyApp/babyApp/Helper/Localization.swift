@@ -14,9 +14,13 @@ public func localized(_ key: LocalizationKey) -> String {
 }
 
 public enum LocalizationKey: String {
+
+//    case done, ok, yes, no
+
 	case titleBabyApp
 	case titleMelodySound
 	case titleQuickSound
+    case titleSettings
 
     case quickSoundShower
     case quickSoundVacuum
