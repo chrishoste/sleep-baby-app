@@ -15,6 +15,8 @@ protocol MelodyLightViewControllerDelegate: class {
 
 class MelodyLightViewController: UIViewController {
 
+    let colors: [UIColor] = [.red, .orange, .yellow, .green, .blue, .purple]
+
 	let view1: UIView = {
 		let view = UIView()
 		view.backgroundColor = .lightGray
@@ -40,6 +42,7 @@ class MelodyLightViewController: UIViewController {
 		view.backgroundColor = .clear
 
 		view1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleClose(_:))))
+        backgroundTransition(index: 0)
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +100,15 @@ class MelodyLightViewController: UIViewController {
 		})
 
 	}
+
+    func backgroundTransition(index: Int) {
+
+        UIView.animate(withDuration: 3, delay: 0, options: .curveEaseOut, animations: {
+            self.view1.backgroundColor = self.colors[index]
+        }, completion: { (_) in
+            self.backgroundTransition(index: index < self.colors.count - 1 ? index + 1 : 0)
+        })
+    }
 
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
