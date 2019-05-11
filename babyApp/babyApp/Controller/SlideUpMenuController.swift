@@ -9,11 +9,14 @@
 import Foundation
 import UIKit
 
-enum MenuState: Int {
-    case close = 0, open
+enum MenuState {
+    case close, open, fullScreen
 }
 
 class SlideUpMenuController: UIViewController {
+
+    private var stackView: UIStackView!
+    private var topStackView: UIStackView!
 
     private let overlayDarkView: UIView = {
         let view = UIView()
@@ -32,6 +35,8 @@ class SlideUpMenuController: UIViewController {
     private var menuHeightAnchor: NSLayoutConstraint?
     private var menuBottomAnchor: NSLayoutConstraint?
 
+    private var panGesture: UIPanGestureRecognizer!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,7 +52,8 @@ class SlideUpMenuController: UIViewController {
         view.addSubview(overlayDarkView)
         overlayDarkView.fillSuperview()
         overlayDarkView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleClose)))
-        view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:))))
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
+        view.addGestureRecognizer(panGesture)
 
         view.addSubview(menuView)
         menuView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor)
@@ -59,10 +65,13 @@ class SlideUpMenuController: UIViewController {
 
         let controller = setupViewController()
 
-        let stackView = CustomStackView(arrangedSubviews: [CustomStackView(arrangedSubviews: [UIView(), ThumbSlidingView(), UIView()], distribution: .equalCentering), controller.view], axis: .vertical, spacing: 8)
+        topStackView = CustomStackView(arrangedSubviews: [UIView(), ThumbSlidingView(), UIView()], distribution: .equalCentering)
+        topStackView.isLayoutMarginsRelativeArrangement = true
+        topStackView.layoutMargins = .init(top: 8, left: 0, bottom: 0, right: 0)
+        stackView = CustomStackView(arrangedSubviews: [topStackView, controller.view], axis: .vertical, spacing: 8)
 
         menuView.addSubview(stackView)
-        stackView.fillSuperview(padding: .init(top: 8, left: 0, bottom: 0, right: 0))
+        stackView.fillSuperview()
 
         addChild(controller)
     }
@@ -74,6 +83,7 @@ class SlideUpMenuController: UIViewController {
             let navController = UINavigationController(rootViewController: settingsController)
             return navController
         }
+
         return UIViewController()
     }
 
@@ -82,10 +92,21 @@ class SlideUpMenuController: UIViewController {
     }
 
     private func performAnimation(forState state: MenuState) {
-        menuBottomAnchor?.constant = state.rawValue < 1 ? Constant.menuHeight : 0
-        menuHeightAnchor?.constant = Constant.menuHeight
+
+        var menuHeight: CGFloat = 0
+
+        switch state {
+        case .fullScreen:
+            menuHeight = view.frame.height
+        default:
+            menuHeight = Constant.menuHeight
+        }
+
+        menuBottomAnchor?.constant = state == .close ? menuHeight : 0
+        menuHeightAnchor?.constant = state == .close ? Constant.menuHeight : menuHeight
+
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseOut, animations: {
-            self.overlayDarkView.alpha = CGFloat(state.rawValue)
+            self.overlayDarkView.alpha = state == .close ? 0 : 1
             self.view.layoutIfNeeded()
         }) { (_) in
             if state == .close {
@@ -130,4 +151,11 @@ class SlideUpMenuController: UIViewController {
     }
 }
 
-extension SlideUpMenuController: SettingsViewControllerDelegate {}
+extension SlideUpMenuController: SettingsViewControllerDelegate {
+    func handleFullScreen() {
+        stackView.removeArrangedSubview(topStackView)
+        topStackView.removeFromSuperview()
+        panGesture.isEnabled = false
+        performAnimation(forState: .fullScreen)
+    }
+}

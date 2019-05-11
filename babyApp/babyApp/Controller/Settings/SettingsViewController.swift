@@ -11,6 +11,7 @@ import UIKit
 
 protocol SettingsViewControllerDelegate: class {
     func handleClose()
+    func handleFullScreen()
 }
 
 class SettingsViewController: UITableViewController {
@@ -27,6 +28,22 @@ class SettingsViewController: UITableViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.isTranslucent = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            print("dosomething")
+        default:
+            handleFullScreen()
+        }
+    }
+
+    func handleFullScreen() {
+        delegate?.handleFullScreen()
+        let vc = UIViewController()
+        vc.view.backgroundColor = .white
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc func handleDone() {
