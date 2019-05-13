@@ -13,3 +13,8 @@ struct Constant {
     public static let spacing: CGFloat = 8
     public static let menuHeight: CGFloat = 300
 }
+
+struct CustomColor {
+    public static let backgroundColor: UIColor = UIColor.init(hexString: "FFDBCA")
+    public static let nightLightSmallView1: UIColor = UIColor.init(hexString: "9294FF")
+}

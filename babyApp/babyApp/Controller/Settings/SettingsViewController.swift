@@ -41,9 +41,9 @@ class SettingsViewController: UITableViewController {
 
     func handleFullScreen() {
         delegate?.handleFullScreen()
-        let vc = UIViewController()
-        vc.view.backgroundColor = .white
-        navigationController?.pushViewController(vc, animated: true)
+        let vcc = UIViewController()
+        vcc.view.backgroundColor = .white
+        navigationController?.pushViewController(vcc, animated: true)
     }
 
     @objc func handleDone() {

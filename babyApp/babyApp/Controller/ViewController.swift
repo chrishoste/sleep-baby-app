@@ -42,7 +42,7 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		view.backgroundColor = .white
+		view.backgroundColor = CustomColor.backgroundColor
 
 		setupView()
 	}
@@ -88,9 +88,8 @@ class ViewController: UIViewController {
 		var views: [UIView] = []
 
 		for _ in melodys {
-			let melodyView = UIView()
+			let melodyView = NightLightSmallView()
 			melodyView.layer.cornerRadius = 10
-			melodyView.backgroundColor = .lightGray
 			melodyView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTab(_:))))
 			views.append(melodyView)
 		}

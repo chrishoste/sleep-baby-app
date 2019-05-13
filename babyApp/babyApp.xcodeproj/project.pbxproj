@@ -27,6 +27,9 @@
 		EAC6566B2280D0DA003DF5AE /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC6566A2280D0DA003DF5AE /* Localization.swift */; };
 		EAD17DAB22819CB400211F42 /* SlideUpMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD17DAA22819CB400211F42 /* SlideUpMenuController.swift */; };
 		EAD17DAE2281A31200211F42 /* ThumbSlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD17DAD2281A31200211F42 /* ThumbSlidingView.swift */; };
+		EAD5BE182289B7FD00C38265 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5BE172289B7FD00C38265 /* UIColor.swift */; };
+		EAD5BE1A2289BC5C00C38265 /* NightLightSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5BE192289BC5C00C38265 /* NightLightSmallView.swift */; };
+		EAD5BE1C2289BE3600C38265 /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5BE1B2289BE3600C38265 /* PlayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,9 @@
 		EAC6566A2280D0DA003DF5AE /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		EAD17DAA22819CB400211F42 /* SlideUpMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpMenuController.swift; sourceTree = "<group>"; };
 		EAD17DAD2281A31200211F42 /* ThumbSlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbSlidingView.swift; sourceTree = "<group>"; };
+		EAD5BE172289B7FD00C38265 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		EAD5BE192289BC5C00C38265 /* NightLightSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightLightSmallView.swift; sourceTree = "<group>"; };
+		EAD5BE1B2289BE3600C38265 /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +212,7 @@
 				EAC6565F2280CB89003DF5AE /* UILabel.swift */,
 				EAC6566A2280D0DA003DF5AE /* Localization.swift */,
 				EAA4F55522834EE80016C552 /* Constant.swift */,
+				EAD5BE172289B7FD00C38265 /* UIColor.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -235,6 +242,8 @@
 			isa = PBXGroup;
 			children = (
 				EAD17DAD2281A31200211F42 /* ThumbSlidingView.swift */,
+				EAD5BE192289BC5C00C38265 /* NightLightSmallView.swift */,
+				EAD5BE1B2289BE3600C38265 /* PlayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -465,6 +474,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA277184227F53E400016850 /* ViewController.swift in Sources */,
+				EAD5BE1A2289BC5C00C38265 /* NightLightSmallView.swift in Sources */,
+				EAD5BE182289B7FD00C38265 /* UIColor.swift in Sources */,
 				EAC6565E2280BBE9003DF5AE /* UIStackView.swift in Sources */,
 				EAC6566B2280D0DA003DF5AE /* Localization.swift in Sources */,
 				EAA4F554228345D80016C552 /* SettingsViewController.swift in Sources */,
@@ -472,6 +483,7 @@
 				EA2D8734227F866B005C4186 /* MelodyLightViewController.swift in Sources */,
 				EA277182227F53E400016850 /* AppDelegate.swift in Sources */,
 				EAD17DAB22819CB400211F42 /* SlideUpMenuController.swift in Sources */,
+				EAD5BE1C2289BE3600C38265 /* PlayView.swift in Sources */,
 				EAA4F55622834EE80016C552 /* Constant.swift in Sources */,
 				EAC656602280CB89003DF5AE /* UILabel.swift in Sources */,
 				EAC6565A2280BA7E003DF5AE /* UIView+Layout.swift in Sources */,
