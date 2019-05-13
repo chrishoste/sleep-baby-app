@@ -21,7 +21,7 @@ class NightLightSmallView: UIView {
 
     let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Night light with some blue accents"
+        label.text = "Night light chilly colors"
         label.font = UIFont.systemFont(ofSize: 14, weight: .light)
         label.textColor = .white
         label.numberOfLines = 0
@@ -30,25 +30,49 @@ class NightLightSmallView: UIView {
 
     let animalImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "pinguin")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
-    override init(frame: CGRect) {
+    let melodyId: Int
+
+    init(melody: MelodySound) {
+        melodyId = melody.identifier
         super.init(frame: .zero)
 
-        backgroundColor = CustomColor.nightLightSmallView1
         clipsToBounds = true
+        layer.cornerRadius = 10
+        backgroundColor = melody.color
+
+        titleLabel.text = melody.title
+        descriptionLabel.text = melody.description
+        animalImageView.image = melody.image
 
         let topStackView = CustomStackView(arrangedSubviews: [titleLabel, descriptionLabel, UIView()], axis: .vertical)
-        let playStackView = CustomStackView(arrangedSubviews: [PlayView(), UIView()])
+        topStackView.alignment = melody.identifier.isMultiple(of: 2) ? .trailing : .leading
+
+        let playView = melody.identifier.isMultiple(of: 2) ? [UIView(), PlayView(color: melody.color)] : [PlayView(color: melody.color), UIView()]
+        let playStackView = CustomStackView(arrangedSubviews: playView)
         playStackView.alignment = .center
 
         let stackView = CustomStackView(arrangedSubviews: [topStackView, playStackView], axis: .vertical, distribution: .fillEqually)
 
+        addSubview(animalImageView)
         addSubview(stackView)
-        stackView.fillSuperview(padding: .init(top: 16, left: 16, bottom: 8, right: 8))
+        stackView.fillSuperview(padding: .init(top: 16, left: 16, bottom: 8, right: 16))
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        animalImageView.constrainWidth(constant: frame.height)
+        animalImageView.constrainHeight(constant: frame.height)
+
+        if melodyId.isMultiple(of: 2) {
+            animalImageView.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: nil)
+        } else {
+            animalImageView.anchor(top: nil, leading: nil, bottom: nil, trailing: trailingAnchor)
+        }
+
     }
 
     required init?(coder aDecoder: NSCoder) {

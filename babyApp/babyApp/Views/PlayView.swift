@@ -14,7 +14,6 @@ class PlayView: UIView {
     let playLabel: UILabel = {
         let label = UILabel()
         label.text = "Play"
-        label.textColor = CustomColor.nightLightSmallView1
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         return label
     }()
@@ -23,16 +22,18 @@ class PlayView: UIView {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "play")
         imageView.contentMode = .center
-        imageView.tintColor = CustomColor.nightLightSmallView1
         imageView.constrainWidth(constant: 20)
         return imageView
     }()
 
-    init() {
+    init(color: UIColor) {
         super.init(frame: .zero)
 
         backgroundColor = .white
         layer.cornerRadius = 15
+
+        playLabel.textColor = color
+        playImageView.tintColor = color
 
         constrainWidth(constant: 90)
         constrainHeight(constant: 30)

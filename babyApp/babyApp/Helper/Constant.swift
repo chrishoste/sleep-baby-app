@@ -16,5 +16,8 @@ struct Constant {
 
 struct CustomColor {
     public static let backgroundColor: UIColor = UIColor.init(hexString: "FFDBCA")
+    public static let backgroundColorTest1: UIColor = UIColor.init(hexString: "FD8865")
+
     public static let nightLightSmallView1: UIColor = UIColor.init(hexString: "9294FF")
+    public static let nightLightSmallView2: UIColor = UIColor.init(hexString: "FF9292")
 }

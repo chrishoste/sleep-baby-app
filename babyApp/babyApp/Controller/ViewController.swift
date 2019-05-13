@@ -10,6 +10,10 @@ import UIKit
 
 struct MelodySound {
 	let identifier: Int
+    let title: String
+    let description: String
+    let color: UIColor
+    let image: UIImage
 }
 
 struct QuickSound {
@@ -18,10 +22,13 @@ struct QuickSound {
 
 class ViewController: UIViewController {
 
-    // Staubsauger, Spühlmaschine/Waschmaschine, Dusche
+    // Staubsauger, Spühlmaschine/Waschmaschine, Dusche, Auto, Spühlen
 	private let quickSounds1 = [QuickSound(identifier: 1), QuickSound(identifier: 2)]
     private let quickSounds2 = [QuickSound(identifier: 3), QuickSound(identifier: 4)]
-	private let melodySounds = [MelodySound(identifier: 1), MelodySound(identifier: 2)]
+	private let melodySounds = [
+        MelodySound(identifier: 1, title: "Melody 1", description: "Meldody 1 and fancy lights", color: CustomColor.nightLightSmallView2, image: #imageLiteral(resourceName: "pinguin")),
+        MelodySound(identifier: 2, title: "Melody 2", description: "Meldody 2 and fancy lights", color: CustomColor.nightLightSmallView1, image: #imageLiteral(resourceName: "fox"))
+    ]
 
 	private let settingsButton: UIButton = {
 		let button = UIButton()
@@ -42,7 +49,7 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		view.backgroundColor = CustomColor.backgroundColor
+		view.backgroundColor = .white
 
 		setupView()
 	}
@@ -87,9 +94,8 @@ class ViewController: UIViewController {
 	private func generateMelodyViews(_ melodys: [MelodySound]) -> [UIView] {
 		var views: [UIView] = []
 
-		for _ in melodys {
-			let melodyView = NightLightSmallView()
-			melodyView.layer.cornerRadius = 10
+		for melody in melodys {
+			let melodyView = NightLightSmallView(melody: melody)
 			melodyView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTab(_:))))
 			views.append(melodyView)
 		}
