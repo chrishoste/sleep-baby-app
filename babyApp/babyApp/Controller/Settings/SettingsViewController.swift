@@ -40,6 +40,7 @@ class SettingsViewController: UITableViewController {
     }
 
     func handleFullScreen() {
+        tableView.isScrollEnabled = true
         delegate?.handleFullScreen()
         let vcc = UIViewController()
         vcc.view.backgroundColor = .white
