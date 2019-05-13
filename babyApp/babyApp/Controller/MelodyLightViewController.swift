@@ -103,7 +103,7 @@ class MelodyLightViewController: UIViewController {
 
     func backgroundTransition(index: Int) {
 
-        UIView.animate(withDuration: 3, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 3, delay: 0, options: [.curveEaseOut, .allowUserInteraction], animations: {
             self.view1.backgroundColor = self.colors[index]
         }, completion: { (_) in
             self.backgroundTransition(index: index < self.colors.count - 1 ? index + 1 : 0)
