@@ -11,12 +11,7 @@ import UIKit
 
 class NightLightSmallView: UIView {
 
-    let animalImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-
+    let animalImageView = UIImageView()
     let melodyId: Int
 
     init(melody: MelodySound) {
@@ -28,6 +23,11 @@ class NightLightSmallView: UIView {
         setupStackViews(melody)
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        constraintImageView()
+    }
+
     fileprivate func setupView(_ melody: MelodySound) {
         clipsToBounds = true
         layer.cornerRadius = 10
@@ -36,6 +36,7 @@ class NightLightSmallView: UIView {
 
     fileprivate func setupImage(_ melody: MelodySound) {
         animalImageView.image = melody.image
+        animalImageView.contentMode = .scaleAspectFill
     }
 
     fileprivate func setupStackViews(_ melody: MelodySound) {
@@ -53,8 +54,7 @@ class NightLightSmallView: UIView {
         stackView.fillSuperview(padding: .init(top: 16, left: 16, bottom: 8, right: 16))
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    fileprivate func constraintImageView() {
         animalImageView.constrainWidth(constant: frame.height)
 
         if melodyId.isMultiple(of: 2) {

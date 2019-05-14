@@ -59,20 +59,22 @@ class ViewController: UIViewController {
 		stackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 8, left: 16, bottom: 16, right: 16))
 	}
 
-	@objc private func handleTab(_ sender: UITapGestureRecognizer) {
-
-        guard let melodyView = sender.view as? NightLightSmallView else {
-            return
+    @objc private func handleTab(_ sender: UITapGestureRecognizer) {
+        if let melodyView = sender.view as? NightLightSmallView {
+            tabOnNightLightView(melodyView, sender)
         }
-        let melodyLightViewController = MelodyLightViewController(frame: (melodyView.superview?.convert(melodyView.frame, to: view))!, melody: Data.melodySounds[melodyView.melodyId - 1])
-		melodyLightViewController.delegate = self
-		melodyLightViewController.modalPresentationStyle = .overCurrentContext
-
-		self.present(melodyLightViewController, animated: false) {
-			self.lastTabedView = sender.view
-			sender.view?.alpha = 0
-		}
 	}
+
+    private func tabOnNightLightView(_ melodyView: NightLightSmallView, _ sender: UITapGestureRecognizer) {
+        let melodyLightViewController = MelodyLightViewController(frame: (melodyView.superview?.convert(melodyView.frame, to: view))!, melody: Data.melodySounds[melodyView.melodyId])
+        melodyLightViewController.delegate = self
+        melodyLightViewController.modalPresentationStyle = .overCurrentContext
+
+        self.present(melodyLightViewController, animated: false) {
+            self.lastTabedView = sender.view
+            sender.view?.alpha = 0
+        }
+    }
 
 	private func generateMelodyViews(_ melodys: [MelodySound]) -> [UIView] {
 		var views: [UIView] = []
@@ -89,14 +91,13 @@ class ViewController: UIViewController {
 	private func generateQuickSoundViews(_ sounds: [QuickSound]) -> [UIView] {
 		var views: [UIView] = []
 
-		for _ in sounds {
-			let soundView = UIView()
+        sounds.forEach { (_) in
+            let soundView = UIView()
             views.append(soundView)
-			soundView.layer.cornerRadius = 10
-			soundView.backgroundColor = .lightGray
-            //soundView.constraintSquare(spacing: Constant.spacing, fullWidth: (view.frame.width - 32), count: sounds.count)
-			views.append(soundView)
-		}
+            soundView.layer.cornerRadius = 10
+            soundView.backgroundColor = .lightGray
+            views.append(soundView)
+        }
 
 		return views
 	}
@@ -104,7 +105,6 @@ class ViewController: UIViewController {
     @objc private func openSettings() {
         let menuController = SlideUpMenuController()
         menuController.modalPresentationStyle = .overCurrentContext
-
         self.present(menuController, animated: false)
     }
 
@@ -113,15 +113,5 @@ class ViewController: UIViewController {
 extension ViewController: MelodyLightViewControllerDelegate {
 	func didClose() {
 		lastTabedView?.alpha = 1
-	}
-}
-
-extension UIView {
-	func constraintSquare(spacing: CGFloat, fullWidth: CGFloat, count: Int) {
-		let numberOfViews = CGFloat(count)
-		let size = (fullWidth - (spacing * (numberOfViews-1))) / numberOfViews
-
-		self.constrainWidth(constant: size)
-        self.constrainHeight(constant: size)
 	}
 }
