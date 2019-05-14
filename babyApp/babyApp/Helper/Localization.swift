@@ -25,4 +25,9 @@ public enum LocalizationKey: String {
     case quickSoundShower
     case quickSoundVacuum
     case quickSoundWashingMachine
+
+    case nightLightTitle1
+    case nightLightDescription1
+    case nightLightTitle2
+    case nightLightDescription2
 }

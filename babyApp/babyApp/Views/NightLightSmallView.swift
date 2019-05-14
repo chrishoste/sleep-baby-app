@@ -11,26 +11,9 @@ import UIKit
 
 class NightLightSmallView: UIView {
 
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Melody 1"
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        label.textColor = .white
-        return label
-    }()
-
-    let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Night light chilly colors"
-        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-
     let animalImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
@@ -40,15 +23,23 @@ class NightLightSmallView: UIView {
         melodyId = melody.identifier
         super.init(frame: .zero)
 
+        setupView(melody)
+        setupImage(melody)
+        setupStackViews(melody)
+    }
+
+    fileprivate func setupView(_ melody: MelodySound) {
         clipsToBounds = true
         layer.cornerRadius = 10
         backgroundColor = melody.color
+    }
 
-        titleLabel.text = melody.title
-        descriptionLabel.text = melody.description
+    fileprivate func setupImage(_ melody: MelodySound) {
         animalImageView.image = melody.image
+    }
 
-        let topStackView = CustomStackView(arrangedSubviews: [titleLabel, descriptionLabel, UIView()], axis: .vertical)
+    fileprivate func setupStackViews(_ melody: MelodySound) {
+        let topStackView = CustomStackView(arrangedSubviews: [NightLightTitleLabel(key: melody.title), NightLightDescriptionLabel(key: melody.description), UIView()], axis: .vertical)
         topStackView.alignment = melody.identifier.isMultiple(of: 2) ? .trailing : .leading
 
         let playView = melody.identifier.isMultiple(of: 2) ? [UIView(), PlayView(color: melody.color)] : [PlayView(color: melody.color), UIView()]
@@ -65,14 +56,12 @@ class NightLightSmallView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         animalImageView.constrainWidth(constant: frame.height)
-        animalImageView.constrainHeight(constant: frame.height)
 
         if melodyId.isMultiple(of: 2) {
-            animalImageView.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: nil)
+            animalImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil)
         } else {
-            animalImageView.anchor(top: nil, leading: nil, bottom: nil, trailing: trailingAnchor)
+            animalImageView.anchor(top: topAnchor, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor)
         }
-
     }
 
     required init?(coder aDecoder: NSCoder) {

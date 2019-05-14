@@ -33,3 +33,32 @@ class TitleLabel: UILabel {
 		fatalError("init(coder:) has not been implemented")
 	}
 }
+
+class NightLightTitleLabel: UILabel {
+
+    init(key: LocalizationKey) {
+        super.init(frame: .zero)
+        self.text = localized(key)
+        self.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        self.textColor = .white
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class NightLightDescriptionLabel: UILabel {
+
+    init(key: LocalizationKey) {
+        super.init(frame: .zero)
+        self.text = localized(key)
+        self.font = UIFont.systemFont(ofSize: 14, weight: .light)
+        self.numberOfLines = 0
+        self.textColor = .white
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}

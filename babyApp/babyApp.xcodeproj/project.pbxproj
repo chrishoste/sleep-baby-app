@@ -10,6 +10,7 @@
 		26CEA1B0F46EF8A09DCB5F5B /* Pods_babyAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BFCE4208BC6D3E4A407CEAF /* Pods_babyAppUITests.framework */; };
 		7E05BF7D5C0A87108FB19BB5 /* Pods_babyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E1A28C31DE3A7A65D6765F /* Pods_babyApp.framework */; };
 		E5A637322F1A305A6E7F51FC /* Pods_babyAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29D9F07AC60C042FBC357F1 /* Pods_babyAppTests.framework */; };
+		EA03E223228B0A8F00B24A9F /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA03E222228B0A8F00B24A9F /* Data.swift */; };
 		EA277182227F53E400016850 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA277181227F53E400016850 /* AppDelegate.swift */; };
 		EA277184227F53E400016850 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA277183227F53E400016850 /* ViewController.swift */; };
 		EA277189227F53E500016850 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA277188227F53E500016850 /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		A00E50B8753BFE6F746C0033 /* Pods-babyAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-babyAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-babyAppTests/Pods-babyAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B406D3B5AA7110C3909EB9B8 /* Pods-babyAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-babyAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-babyAppUITests/Pods-babyAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D29D9F07AC60C042FBC357F1 /* Pods_babyAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_babyAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA03E222228B0A8F00B24A9F /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		EA27717E227F53E400016850 /* babyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = babyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA277181227F53E400016850 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA277183227F53E400016850 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -167,11 +169,12 @@
 		EA277180227F53E400016850 /* babyApp */ = {
 			isa = PBXGroup;
 			children = (
-				EAD17DAC2281A2E000211F42 /* Views */,
 				EA27718D227F53E500016850 /* Info.plist */,
 				EA277181227F53E400016850 /* AppDelegate.swift */,
-				EAC656562280BA16003DF5AE /* Helper */,
+				EA03E222228B0A8F00B24A9F /* Data.swift */,
+				EAD17DAC2281A2E000211F42 /* Views */,
 				EAC6565C2280BAE6003DF5AE /* Controller */,
+				EAC656562280BA16003DF5AE /* Helper */,
 				EAC6565B2280BAA8003DF5AE /* Ressources */,
 			);
 			path = babyApp;
@@ -474,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA277184227F53E400016850 /* ViewController.swift in Sources */,
+				EA03E223228B0A8F00B24A9F /* Data.swift in Sources */,
 				EAD5BE1A2289BC5C00C38265 /* NightLightSmallView.swift in Sources */,
 				EAD5BE182289B7FD00C38265 /* UIColor.swift in Sources */,
 				EAC6565E2280BBE9003DF5AE /* UIStackView.swift in Sources */,

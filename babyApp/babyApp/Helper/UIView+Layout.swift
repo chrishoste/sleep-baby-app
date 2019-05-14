@@ -48,6 +48,25 @@ extension UIView {
 		return anchoredConstraints
 	}
 
+    func fillSafeAreaSuperview(top: Bool = true, trailing: Bool = true, bottom: Bool = true, leading: Bool = true, padding: UIEdgeInsets = .zero) {
+        translatesAutoresizingMaskIntoConstraints = false
+        if let superviewTopAnchor = top ? superview?.safeAreaLayoutGuide.topAnchor : superview?.topAnchor {
+            topAnchor.constraint(equalTo: superviewTopAnchor, constant: padding.top).isActive = true
+        }
+
+        if let superviewBottomAnchor = bottom ? superview?.safeAreaLayoutGuide.bottomAnchor : superview?.bottomAnchor {
+            bottomAnchor.constraint(equalTo: superviewBottomAnchor, constant: -padding.bottom).isActive = true
+        }
+
+        if let superviewLeadingAnchor = leading ? superview?.safeAreaLayoutGuide.leadingAnchor : superview?.leadingAnchor {
+            leadingAnchor.constraint(equalTo: superviewLeadingAnchor, constant: padding.left).isActive = true
+        }
+
+        if let superviewTrailingAnchor = trailing ? superview?.safeAreaLayoutGuide.trailingAnchor : superview?.trailingAnchor {
+            trailingAnchor.constraint(equalTo: superviewTrailingAnchor, constant: -padding.right).isActive = true
+        }
+    }
+
 	func fillSuperview(padding: UIEdgeInsets = .zero) {
 		translatesAutoresizingMaskIntoConstraints = false
 		if let superviewTopAnchor = superview?.topAnchor {

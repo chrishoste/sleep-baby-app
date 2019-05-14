@@ -15,13 +15,11 @@ protocol MelodyLightViewControllerDelegate: class {
 
 class MelodyLightViewController: UIViewController {
 
-    let colors: [UIColor] = [.red, .orange, .yellow, .green, .blue, .purple]
+    let colors: [UIColor]
+    var stopAnimation = false
 
-	let view1: UIView = {
-		let view = UIView()
-		view.backgroundColor = .lightGray
-		return view
-	}()
+    let snapView = UIView()
+    let nightLightView: NightLightSmallView
 
 	var smallViewFrame: CGRect
 	var viewsTopAnchor: NSLayoutConstraint?
@@ -31,17 +29,28 @@ class MelodyLightViewController: UIViewController {
 
 	weak var delegate: MelodyLightViewControllerDelegate?
 
-	init(frame: CGRect) {
+    init(frame: CGRect, melody: MelodySound) {
 		smallViewFrame = frame
+        nightLightView = NightLightSmallView(melody: melody)
+        colors = melody.colors
 		super.init(nibName: nil, bundle: nil)
 	}
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        stopAnimation = true
+
+        snapView.layer.removeAllAnimations()
+        view.layer.removeAllAnimations()
+    }
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		view.backgroundColor = .clear
 
-		view1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleClose(_:))))
+		snapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleClose(_:))))
         backgroundTransition(index: 0)
 	}
 
@@ -49,32 +58,37 @@ class MelodyLightViewController: UIViewController {
 		super.viewWillAppear(animated)
 
 		setupViews(frame: smallViewFrame)
-	}
+    }
 
-	func setupViews(frame: CGRect) {
-		view.addSubview(view1)
-		view1.layer.cornerRadius = 10
-		view1.translatesAutoresizingMaskIntoConstraints = false
-		viewsTopAnchor = view1.topAnchor.constraint(equalTo: view.topAnchor, constant: smallViewFrame.origin.y)
-		viewsLeadingAnchor = view1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: smallViewFrame.origin.x)
+    func setupViews(frame: CGRect) {
+        view.addSubview(snapView)
+        snapView.layer.cornerRadius = 10
+        snapView.layer.masksToBounds = true
+        snapView.translatesAutoresizingMaskIntoConstraints = false
+        viewsTopAnchor = snapView.topAnchor.constraint(equalTo: view.topAnchor, constant: smallViewFrame.origin.y)
+        viewsLeadingAnchor = snapView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: smallViewFrame.origin.x)
 
-		viewsHeightAnchor = view1.heightAnchor.constraint(equalToConstant: smallViewFrame.height)
-		viewsWidthAnchor = view1.widthAnchor.constraint(equalToConstant: smallViewFrame.width)
+        viewsHeightAnchor = snapView.heightAnchor.constraint(equalToConstant: smallViewFrame.height)
+        viewsWidthAnchor = snapView.widthAnchor.constraint(equalToConstant: smallViewFrame.width)
 
-		[viewsTopAnchor, viewsLeadingAnchor, viewsHeightAnchor, viewsWidthAnchor].forEach({$0?.isActive = true})
+        [viewsTopAnchor, viewsLeadingAnchor, viewsHeightAnchor, viewsWidthAnchor].forEach({$0?.isActive = true})
 
-		animateView()
-	}
+        snapView.addSubview(nightLightView)
+        nightLightView.fillSafeAreaSuperview(bottom: false)
+        animateView()
+    }
 
 	func animateView() {
 		self.view.layoutIfNeeded()
 
-		UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: {
+		UIView.animate(withDuration: 0.20, delay: 0, options: .curveEaseOut, animations: {
 
 			self.viewsTopAnchor?.constant = 0
 			self.viewsLeadingAnchor?.constant = 0
 			self.viewsWidthAnchor?.constant = self.view.frame.width
 			self.viewsHeightAnchor?.constant = self.view.frame.height
+            self.snapView.layer.cornerRadius = 0
+            self.nightLightView.backgroundColor = .clear
 
 			self.view.layoutIfNeeded() // starts animation
 
@@ -83,13 +97,15 @@ class MelodyLightViewController: UIViewController {
 
 	@objc func handleClose(_ sender: UITapGestureRecognizer) {
 		self.view.layoutIfNeeded()
+        nightLightView.backgroundColor = colors[0]
 
-		UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 5, options: .curveEaseOut, animations: {
+		UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 5, options: .curveEaseOut, animations: {
 
 			self.viewsTopAnchor?.constant = self.smallViewFrame.origin.y
 			self.viewsLeadingAnchor?.constant = self.smallViewFrame.origin.x
 			self.viewsWidthAnchor?.constant = self.smallViewFrame.width
 			self.viewsHeightAnchor?.constant = self.smallViewFrame.height
+            self.snapView.layer.cornerRadius = 10
 
 			self.view.layoutIfNeeded() // starts animation
 
@@ -102,10 +118,12 @@ class MelodyLightViewController: UIViewController {
 	}
 
     func backgroundTransition(index: Int) {
-
-        UIView.animate(withDuration: 3, delay: 0, options: [.curveEaseOut, .allowUserInteraction], animations: {
-            self.view1.backgroundColor = self.colors[index]
+        UIView.animate(withDuration: 5, delay: 0, options: [.curveEaseOut, .allowUserInteraction], animations: {
+            self.snapView.backgroundColor = self.colors[index]
         }, completion: { (_) in
+            if self.stopAnimation {
+                return
+            }
             self.backgroundTransition(index: index < self.colors.count - 1 ? index + 1 : 0)
         })
     }

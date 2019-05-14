@@ -20,3 +20,8 @@
 "quickSoundShower" = "Shower";
 "quickSoundVacuum" = "Vacuum";
 "quickSoundWashingMachine" = "Washing machine";
+
+"nightLightTitle1" = "Melody 1";
+"nightLightDescription1" = "Melody 1 with fancy lights";
+"nightLightTitle2" = "Melody 2";
+"nightLightDescription2" = "Melody 2 with fancy lights";
