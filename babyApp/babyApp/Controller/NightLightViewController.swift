@@ -1,5 +1,5 @@
 //
-//  MelodyLightViewController.swift
+//  NightLightViewController.swift
 //  babyApp
 //
 //  Created by Christophe Hoste on 05.05.19.
@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-protocol MelodyLightViewControllerDelegate: class {
+protocol NightLightViewControllerDelegate: class {
 	func didClose()
 }
 
-class MelodyLightViewController: UIViewController {
+class NightLightViewController: UIViewController {
 
     let colors: [UIColor]
     var stopAnimation = false
 
     let snapView = UIView()
-    let nightLightView: NightLightSmallView
+    let nightLightView: NightLightView
 
 	var smallViewFrame: CGRect
 	var viewsTopAnchor: NSLayoutConstraint?
@@ -27,12 +27,12 @@ class MelodyLightViewController: UIViewController {
 	var viewsHeightAnchor: NSLayoutConstraint?
 	var viewsWidthAnchor: NSLayoutConstraint?
 
-	weak var delegate: MelodyLightViewControllerDelegate?
+	weak var delegate: NightLightViewControllerDelegate?
 
-    init(frame: CGRect, melody: MelodySound) {
+    init(frame: CGRect, nightLight: NightLight) {
 		smallViewFrame = frame
-        nightLightView = NightLightSmallView(melody: melody)
-        colors = melody.colors
+        nightLightView = NightLightView(nightLight: nightLight)
+        colors = nightLight.nightLightColors
 		super.init(nibName: nil, bundle: nil)
 	}
 

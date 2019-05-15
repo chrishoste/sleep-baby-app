@@ -38,8 +38,8 @@ class ViewController: UIViewController {
 		let titleStackView = CustomStackView(arrangedSubviews: [emptyButton, TitleLabel(key: .titleBabyApp), settingsButton], spacing: 16)
 
 		let topStackView = CustomStackView(arrangedSubviews: [
-			SubLabel(key: .titleMelodySound),
-			CustomStackView(arrangedSubviews: generateMelodyViews(Data.melodySounds), axis: .vertical, spacing: Constant.spacing, distribution: .fillEqually)
+			SubLabel(key: .titleNightLightSound),
+			CustomStackView(arrangedSubviews: generateNightLightViews(Data.nightLight), axis: .vertical, spacing: Constant.spacing, distribution: .fillEqually)
 			], axis: .vertical, spacing: 4)
 
 		let subStackView = CustomStackView(arrangedSubviews: [
@@ -60,29 +60,31 @@ class ViewController: UIViewController {
 	}
 
     @objc private func handleTab(_ sender: UITapGestureRecognizer) {
-        if let melodyView = sender.view as? NightLightSmallView {
-            tabOnNightLightView(melodyView, sender)
+        if let nightLightView = sender.view as? NightLightView {
+            tabOnNightLightView(nightLightView, sender)
         }
 	}
 
-    private func tabOnNightLightView(_ melodyView: NightLightSmallView, _ sender: UITapGestureRecognizer) {
-        let melodyLightViewController = MelodyLightViewController(frame: (melodyView.superview?.convert(melodyView.frame, to: view))!, melody: Data.melodySounds[melodyView.melodyId])
-        melodyLightViewController.delegate = self
-        melodyLightViewController.modalPresentationStyle = .overCurrentContext
+    private func tabOnNightLightView(_ nightLightView: NightLightView, _ sender: UITapGestureRecognizer) {
+        let viewFrame = (nightLightView.superview?.convert(nightLightView.frame, to: view))!
+        let nightLight = Data.nightLight[nightLightView.nightLightId]
+        let nightLightViewController = NightLightViewController(frame: viewFrame, nightLight: nightLight)
+        nightLightViewController.delegate = self
+        nightLightViewController.modalPresentationStyle = .overCurrentContext
 
-        self.present(melodyLightViewController, animated: false) {
+        self.present(nightLightViewController, animated: false) {
             self.lastTabedView = sender.view
             sender.view?.alpha = 0
         }
     }
 
-	private func generateMelodyViews(_ melodys: [MelodySound]) -> [UIView] {
+	private func generateNightLightViews(_ nightLights: [NightLight]) -> [UIView] {
 		var views: [UIView] = []
 
-		for melody in melodys {
-			let melodyView = NightLightSmallView(melody: melody)
-			melodyView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTab(_:))))
-			views.append(melodyView)
+		for nightLight in nightLights {
+            let nightLightView = NightLightView(nightLight: nightLight)
+			nightLightView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTab(_:))))
+			views.append(nightLightView)
 		}
 
 		return views
@@ -110,7 +112,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: MelodyLightViewControllerDelegate {
+extension ViewController: NightLightViewControllerDelegate {
 	func didClose() {
 		lastTabedView?.alpha = 1
 	}

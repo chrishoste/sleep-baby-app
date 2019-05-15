@@ -18,7 +18,7 @@ public enum LocalizationKey: String {
 //    case done, ok, yes, no
 
 	case titleBabyApp
-	case titleMelodySound
+	case titleNightLightSound
 	case titleQuickSound
     case titleSettings
 

@@ -9,18 +9,18 @@
 import Foundation
 import UIKit
 
-class NightLightSmallView: UIView {
+class NightLightView: UIView {
 
     let animalImageView = UIImageView()
-    let melodyId: Int
+    let nightLightId: Int
 
-    init(melody: MelodySound) {
-        melodyId = melody.identifier
+    init(nightLight: NightLight) {
+        nightLightId = nightLight.identifier
         super.init(frame: .zero)
 
-        setupView(melody)
-        setupImage(melody)
-        setupStackViews(melody)
+        setupView(nightLight)
+        setupImage(nightLight)
+        setupStackViews(nightLight)
     }
 
     override func layoutSubviews() {
@@ -28,22 +28,22 @@ class NightLightSmallView: UIView {
         constraintImageView()
     }
 
-    fileprivate func setupView(_ melody: MelodySound) {
+    fileprivate func setupView(_ nightLight: NightLight) {
         clipsToBounds = true
         layer.cornerRadius = 10
-        backgroundColor = melody.color
+        backgroundColor = nightLight.color
     }
 
-    fileprivate func setupImage(_ melody: MelodySound) {
-        animalImageView.image = melody.image
+    fileprivate func setupImage(_ nightLight: NightLight) {
+        animalImageView.image = nightLight.image
         animalImageView.contentMode = .scaleAspectFill
     }
 
-    fileprivate func setupStackViews(_ melody: MelodySound) {
-        let topStackView = CustomStackView(arrangedSubviews: [NightLightTitleLabel(key: melody.title), NightLightDescriptionLabel(key: melody.description), UIView()], axis: .vertical)
-        topStackView.alignment = melody.identifier.isMultiple(of: 2) ? .trailing : .leading
+    fileprivate func setupStackViews(_ nightLight: NightLight) {
+        let topStackView = CustomStackView(arrangedSubviews: [NightLightTitleLabel(key: nightLight.title), NightLightDescriptionLabel(key: nightLight.description), UIView()], axis: .vertical)
+        topStackView.alignment = nightLight.identifier.isMultiple(of: 2) ? .trailing : .leading
 
-        let playView = melody.identifier.isMultiple(of: 2) ? [UIView(), PlayView(color: melody.color)] : [PlayView(color: melody.color), UIView()]
+        let playView = nightLight.identifier.isMultiple(of: 2) ? [UIView(), PlayView(color: nightLight.color)] : [PlayView(color: nightLight.color), UIView()]
         let playStackView = CustomStackView(arrangedSubviews: playView)
         playStackView.alignment = .center
 
@@ -57,7 +57,7 @@ class NightLightSmallView: UIView {
     fileprivate func constraintImageView() {
         animalImageView.constrainWidth(constant: frame.height)
 
-        if melodyId.isMultiple(of: 2) {
+        if nightLightId.isMultiple(of: 2) {
             animalImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil)
         } else {
             animalImageView.anchor(top: topAnchor, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor)
