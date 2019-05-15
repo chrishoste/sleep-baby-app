@@ -67,7 +67,7 @@ class ViewController: UIViewController {
 
     private func tabOnNightLightView(_ nightLightView: NightLightView, _ sender: UITapGestureRecognizer) {
         let viewFrame = (nightLightView.superview?.convert(nightLightView.frame, to: view))!
-        let nightLight = Data.nightLight[nightLightView.nightLightId]
+        let nightLight = Data.nightLight[nightLightView.nightLightId - 1]
         let nightLightViewController = NightLightViewController(frame: viewFrame, nightLight: nightLight)
         nightLightViewController.delegate = self
         nightLightViewController.modalPresentationStyle = .overCurrentContext
