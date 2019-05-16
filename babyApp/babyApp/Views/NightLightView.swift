@@ -11,14 +11,24 @@ import UIKit
 
 class NightLightView: UIView {
 
-    let animalImageView = UIImageView()
+    let animalImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    var imageHeight: NSLayoutConstraint!
+    var imageWidth: NSLayoutConstraint!
+
     let nightLightId: Int
+
     var stackView: UIStackView!
 
     let controlView: UIView = {
         let view = UIView()
         view.backgroundColor = .red
-        view.alpha = 0.5
+        view.alpha = 0
         return view
     }()
 
@@ -33,7 +43,12 @@ class NightLightView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        constraintImageView()
+
+        if frame.height > frame.width {
+            constraintImageView(width: frame.width)
+        } else {
+            constraintImageView(width: frame.height)
+        }
     }
 
     fileprivate func setupView(_ nightLight: NightLight) {
@@ -44,7 +59,6 @@ class NightLightView: UIView {
 
     fileprivate func setupImage(_ nightLight: NightLight) {
         animalImageView.image = nightLight.image
-        animalImageView.contentMode = .scaleAspectFill
     }
 
     fileprivate func setupStackViews(_ nightLight: NightLight) {
@@ -58,17 +72,24 @@ class NightLightView: UIView {
         stackView = CustomStackView(arrangedSubviews: [topStackView, playStackView], axis: .vertical, distribution: .fillEqually)
 
         addSubview(animalImageView)
+        imageWidth = animalImageView.widthAnchor.constraint(equalToConstant: 0)
+        imageWidth.isActive = true
+        imageHeight = animalImageView.heightAnchor.constraint(equalToConstant: 0)
+        imageHeight.isActive = true
         addSubview(stackView)
         stackView.fillSuperview(padding: .init(top: 16, left: 16, bottom: 8, right: 16))
+
+        constraintImageView(width: frame.height)
     }
 
-    fileprivate func constraintImageView() {
-        animalImageView.constrainWidth(constant: frame.height)
+    fileprivate func constraintImageView(width: CGFloat) {
+        imageHeight.constant = width
+        imageWidth.constant = width
 
         if nightLightId.isMultiple(of: 2) {
-            animalImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil)
+            animalImageView.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil)
         } else {
-            animalImageView.anchor(top: topAnchor, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor)
+            animalImageView.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor)
         }
     }
 
