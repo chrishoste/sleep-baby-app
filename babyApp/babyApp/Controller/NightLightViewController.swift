@@ -15,17 +15,17 @@ protocol NightLightViewControllerDelegate: class {
 
 class NightLightViewController: UIViewController {
 
-    let colors: [UIColor]
-    var stopAnimation = false
+    private let colors: [UIColor]
+    private var stopAnimation = false
 
-    let snapView = UIView()
-    let nightLightView: NightLightView
+    private let snapView = UIView()
+    private let nightLightView: NightLightView
 
-	var smallViewFrame: CGRect
-	var viewsTopAnchor: NSLayoutConstraint?
-	var viewsLeadingAnchor: NSLayoutConstraint?
-	var viewsHeightAnchor: NSLayoutConstraint?
-	var viewsWidthAnchor: NSLayoutConstraint?
+	private var smallViewFrame: CGRect
+	private var viewsTopAnchor: NSLayoutConstraint?
+	private var viewsLeadingAnchor: NSLayoutConstraint?
+	private var viewsHeightAnchor: NSLayoutConstraint?
+	private var viewsWidthAnchor: NSLayoutConstraint?
 
 	weak var delegate: NightLightViewControllerDelegate?
 
@@ -50,8 +50,6 @@ class NightLightViewController: UIViewController {
 		super.viewDidLoad()
 
 		view.backgroundColor = .clear
-
-		snapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleClose(_:))))
         backgroundTransition(index: 0)
 	}
 
@@ -61,7 +59,7 @@ class NightLightViewController: UIViewController {
 		setupViews(frame: smallViewFrame)
     }
 
-    func setupViews(frame: CGRect) {
+    private func setupViews(frame: CGRect) {
         view.addSubview(snapView)
         snapView.layer.cornerRadius = 10
         snapView.layer.masksToBounds = true
@@ -79,7 +77,7 @@ class NightLightViewController: UIViewController {
         animateView()
     }
 
-	func animateView() {
+	private func animateView() {
 		self.view.layoutIfNeeded()
 
 		UIView.animate(withDuration: 0.20, delay: 0, options: .curveEaseOut, animations: {
@@ -93,10 +91,13 @@ class NightLightViewController: UIViewController {
 
 			self.view.layoutIfNeeded() // starts animation
 
-		}, completion: nil)
+        }, completion: { (_) in
+            self.showCloseButton()
+        })
 	}
 
-	@objc func handleClose(_ sender: UITapGestureRecognizer) {
+	@objc private func handleClose(_ sender: UIButton) {
+        sender.removeFromSuperview()
 		self.view.layoutIfNeeded()
         nightLightView.backgroundColor = colors[0]
         nightLightView.handleClose()
@@ -119,7 +120,34 @@ class NightLightViewController: UIViewController {
 
 	}
 
-    func backgroundTransition(index: Int) {
+    func showCloseButton() {
+        let closeButton: UIButton = {
+            let button = UIButton()
+            button.translatesAutoresizingMaskIntoConstraints = true
+            button.constrainWidth(constant: 44)
+            button.constrainHeight(constant: 44)
+            button.setImage(#imageLiteral(resourceName: "closeIcon"), for: .normal)
+            button.alpha = 0.7
+            button.addTarget(self, action: #selector(handleClose(_:)), for: .touchUpInside)
+            return button
+        }()
+
+        view.addSubview(closeButton)
+
+        closeButton.transform = .init(translationX: 0, y: -200)
+
+        if nightLightView.nightLightId.isMultiple(of: 2) {
+            closeButton.anchor(top: nightLightView.topAnchor, leading: nightLightView.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 8, left: 16, bottom: 0, right: 0))
+        } else {
+            closeButton.anchor(top: nightLightView.topAnchor, leading: nil, bottom: nil, trailing: nightLightView.trailingAnchor, padding: .init(top: 8, left: 0, bottom: 0, right: 16))
+        }
+
+        UIView.animate(withDuration: 0.35, delay: 0, options: [.allowUserInteraction, .curveEaseInOut], animations: {
+            closeButton.transform = .identity
+        }, completion: nil)
+    }
+
+    private func backgroundTransition(index: Int) {
         UIView.animate(withDuration: 5, delay: 0, options: [.curveEaseOut, .allowUserInteraction], animations: {
             self.snapView.backgroundColor = self.colors[index]
         }, completion: { (_) in

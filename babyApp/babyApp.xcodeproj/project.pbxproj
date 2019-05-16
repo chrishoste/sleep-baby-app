@@ -20,6 +20,8 @@
 		EA2D8734227F866B005C4186 /* NightLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2D8733227F866B005C4186 /* NightLightViewController.swift */; };
 		EA3C2065228C86B4002A183C /* NightLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3C2064228C86B4002A183C /* NightLight.swift */; };
 		EA3C2068228C86CF002A183C /* QuickSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3C2067228C86CF002A183C /* QuickSound.swift */; };
+		EA9637F6228D79F9004DA966 /* BackgroundAnimalImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9637F5228D79F9004DA966 /* BackgroundAnimalImageView.swift */; };
+		EA9637F8228D9971004DA966 /* BackgroundMoonImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9637F7228D9971004DA966 /* BackgroundMoonImageView.swift */; };
 		EAA4F554228345D80016C552 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA4F553228345D80016C552 /* SettingsViewController.swift */; };
 		EAA4F55622834EE80016C552 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA4F55522834EE80016C552 /* Constant.swift */; };
 		EAA4F5582284776B0016C552 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAA4F5572284776B0016C552 /* Settings.storyboard */; };
@@ -78,6 +80,8 @@
 		EA2D8733227F866B005C4186 /* NightLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightLightViewController.swift; sourceTree = "<group>"; };
 		EA3C2064228C86B4002A183C /* NightLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightLight.swift; sourceTree = "<group>"; };
 		EA3C2067228C86CF002A183C /* QuickSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSound.swift; sourceTree = "<group>"; };
+		EA9637F5228D79F9004DA966 /* BackgroundAnimalImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAnimalImageView.swift; sourceTree = "<group>"; };
+		EA9637F7228D9971004DA966 /* BackgroundMoonImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMoonImageView.swift; sourceTree = "<group>"; };
 		EAA4F553228345D80016C552 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EAA4F55522834EE80016C552 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		EAA4F5572284776B0016C552 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -258,6 +262,8 @@
 		EAD17DAC2281A2E000211F42 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EA9637F7228D9971004DA966 /* BackgroundMoonImageView.swift */,
+				EA9637F5228D79F9004DA966 /* BackgroundAnimalImageView.swift */,
 				EAD17DAD2281A31200211F42 /* ThumbSlidingView.swift */,
 				EAD5BE192289BC5C00C38265 /* NightLightView.swift */,
 				EAD5BE1B2289BE3600C38265 /* PlayView.swift */,
@@ -494,12 +500,14 @@
 				EA03E223228B0A8F00B24A9F /* Data.swift in Sources */,
 				EAD5BE1A2289BC5C00C38265 /* NightLightView.swift in Sources */,
 				EA3C2068228C86CF002A183C /* QuickSound.swift in Sources */,
+				EA9637F8228D9971004DA966 /* BackgroundMoonImageView.swift in Sources */,
 				EAD5BE182289B7FD00C38265 /* UIColor.swift in Sources */,
 				EAC6565E2280BBE9003DF5AE /* UIStackView.swift in Sources */,
 				EAC6566B2280D0DA003DF5AE /* Localization.swift in Sources */,
 				EAA4F554228345D80016C552 /* SettingsViewController.swift in Sources */,
 				EAD17DAE2281A31200211F42 /* ThumbSlidingView.swift in Sources */,
 				EA2D8734227F866B005C4186 /* NightLightViewController.swift in Sources */,
+				EA9637F6228D79F9004DA966 /* BackgroundAnimalImageView.swift in Sources */,
 				EA277182227F53E400016850 /* AppDelegate.swift in Sources */,
 				EAD17DAB22819CB400211F42 /* SlideUpMenuController.swift in Sources */,
 				EAD5BE1C2289BE3600C38265 /* PlayView.swift in Sources */,
