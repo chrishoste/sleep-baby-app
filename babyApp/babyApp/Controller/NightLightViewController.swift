@@ -31,7 +31,7 @@ class NightLightViewController: UIViewController {
 
     init(frame: CGRect, nightLight: NightLight) {
 		smallViewFrame = frame
-        nightLightView = NightLightView(nightLight: nightLight)
+        nightLightView = NightLightView(nightLight: nightLight, clipped: false)
         nightLightView.handleFullscreen()
         colors = nightLight.nightLightColors
 		super.init(nibName: nil, bundle: nil)
@@ -80,7 +80,7 @@ class NightLightViewController: UIViewController {
 	private func animateView() {
 		self.view.layoutIfNeeded()
 
-		UIView.animate(withDuration: 0.20, delay: 0, options: .curveEaseOut, animations: {
+		UIView.animate(withDuration: 0.30, delay: 0, options: .curveEaseOut, animations: {
 
 			self.viewsTopAnchor?.constant = 0
 			self.viewsLeadingAnchor?.constant = 0
@@ -102,7 +102,7 @@ class NightLightViewController: UIViewController {
         nightLightView.backgroundColor = colors[0]
         nightLightView.handleClose()
 
-		UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 5, options: .curveEaseOut, animations: {
+		UIView.animate(withDuration: 0.45, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 5, options: .curveEaseOut, animations: {
 
 			self.viewsTopAnchor?.constant = self.smallViewFrame.origin.y
 			self.viewsLeadingAnchor?.constant = self.smallViewFrame.origin.x

@@ -25,12 +25,13 @@ class NightLightView: UIView {
         return view
     }()
 
-    init(nightLight: NightLight, controlView: Bool = false) {
+    init(nightLight: NightLight, clipped: Bool = true) {
         nightLightId = nightLight.identifier
         animalImageView = BackgroundAnimalImageView(nightLight: nightLight)
         moonImageView = BackgroundMoonImageView(nightLight: nightLight)
         super.init(frame: .zero)
 
+        clipsToBounds = clipped
         setupView(nightLight)
         setupStackViews(nightLight)
     }
@@ -40,7 +41,8 @@ class NightLightView: UIView {
 
         if frame.height > frame.width {
             animalImageView.size = frame.width
-            moonImageView.size = frame.width
+            moonImageView.size = frame.width*0.9
+            moonImageView.transform = .init(translationX: 0, y: -44)
         } else {
             animalImageView.size = frame.height
             moonImageView.size = frame.height
@@ -48,7 +50,6 @@ class NightLightView: UIView {
     }
 
     fileprivate func setupView(_ nightLight: NightLight) {
-        clipsToBounds = true
         layer.cornerRadius = 10
         backgroundColor = nightLight.color
     }
@@ -81,6 +82,7 @@ class NightLightView: UIView {
         UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: {
             self.stackView.arrangedSubviews[1].alpha = 0
             self.stackView.arrangedSubviews.last?.alpha = 1
+            self.moonImageView.transform = .identity
         }, completion: { (_) in
             self.stackView.removeArrangedSubview(self.controlView)
         })

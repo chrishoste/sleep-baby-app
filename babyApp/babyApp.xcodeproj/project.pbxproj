@@ -22,6 +22,8 @@
 		EA3C2068228C86CF002A183C /* QuickSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3C2067228C86CF002A183C /* QuickSound.swift */; };
 		EA9637F6228D79F9004DA966 /* BackgroundAnimalImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9637F5228D79F9004DA966 /* BackgroundAnimalImageView.swift */; };
 		EA9637F8228D9971004DA966 /* BackgroundMoonImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9637F7228D9971004DA966 /* BackgroundMoonImageView.swift */; };
+		EA9637FA228DCD74004DA966 /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9637F9228DCD74004DA966 /* TestingViewController.swift */; };
+		EA9637FD228DCE17004DA966 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9637FC228DCE17004DA966 /* Slider.swift */; };
 		EAA4F554228345D80016C552 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA4F553228345D80016C552 /* SettingsViewController.swift */; };
 		EAA4F55622834EE80016C552 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA4F55522834EE80016C552 /* Constant.swift */; };
 		EAA4F5582284776B0016C552 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAA4F5572284776B0016C552 /* Settings.storyboard */; };
@@ -82,6 +84,8 @@
 		EA3C2067228C86CF002A183C /* QuickSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSound.swift; sourceTree = "<group>"; };
 		EA9637F5228D79F9004DA966 /* BackgroundAnimalImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAnimalImageView.swift; sourceTree = "<group>"; };
 		EA9637F7228D9971004DA966 /* BackgroundMoonImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMoonImageView.swift; sourceTree = "<group>"; };
+		EA9637F9228DCD74004DA966 /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
+		EA9637FC228DCE17004DA966 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		EAA4F553228345D80016C552 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EAA4F55522834EE80016C552 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		EAA4F5572284776B0016C552 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 		EA277180227F53E400016850 /* babyApp */ = {
 			isa = PBXGroup;
 			children = (
+				EA9637F9228DCD74004DA966 /* TestingViewController.swift */,
 				EA27718D227F53E500016850 /* Info.plist */,
 				EA277181227F53E400016850 /* AppDelegate.swift */,
 				EA03E222228B0A8F00B24A9F /* Data.swift */,
@@ -214,6 +219,14 @@
 				EA3C2067228C86CF002A183C /* QuickSound.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		EA9637FB228DCE0D004DA966 /* Slider */ = {
+			isa = PBXGroup;
+			children = (
+				EA9637FC228DCE17004DA966 /* Slider.swift */,
+			);
+			path = Slider;
 			sourceTree = "<group>";
 		};
 		EAA4F559228487310016C552 /* Settings */ = {
@@ -262,6 +275,7 @@
 		EAD17DAC2281A2E000211F42 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EA9637FB228DCE0D004DA966 /* Slider */,
 				EA9637F7228D9971004DA966 /* BackgroundMoonImageView.swift */,
 				EA9637F5228D79F9004DA966 /* BackgroundAnimalImageView.swift */,
 				EAD17DAD2281A31200211F42 /* ThumbSlidingView.swift */,
@@ -509,12 +523,14 @@
 				EA2D8734227F866B005C4186 /* NightLightViewController.swift in Sources */,
 				EA9637F6228D79F9004DA966 /* BackgroundAnimalImageView.swift in Sources */,
 				EA277182227F53E400016850 /* AppDelegate.swift in Sources */,
+				EA9637FD228DCE17004DA966 /* Slider.swift in Sources */,
 				EAD17DAB22819CB400211F42 /* SlideUpMenuController.swift in Sources */,
 				EAD5BE1C2289BE3600C38265 /* PlayView.swift in Sources */,
 				EAA4F55622834EE80016C552 /* Constant.swift in Sources */,
 				EA3C2065228C86B4002A183C /* NightLight.swift in Sources */,
 				EAC656602280CB89003DF5AE /* UILabel.swift in Sources */,
 				EAC6565A2280BA7E003DF5AE /* UIView+Layout.swift in Sources */,
+				EA9637FA228DCD74004DA966 /* TestingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
