@@ -30,13 +30,11 @@ class PlayView: UIView {
         super.init(frame: .zero)
 
         backgroundColor = .white
-        layer.cornerRadius = 15
 
         playLabel.textColor = color
         playImageView.tintColor = color
 
         constrainWidth(constant: 90)
-        constrainHeight(constant: 30)
 
         let stackView = CustomStackView(arrangedSubviews: [playImageView, playLabel], spacing: 8)
         addSubview(stackView)
@@ -45,5 +43,10 @@ class PlayView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = frame.height / 2
     }
 }

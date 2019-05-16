@@ -32,6 +32,7 @@ class NightLightViewController: UIViewController {
     init(frame: CGRect, nightLight: NightLight) {
 		smallViewFrame = frame
         nightLightView = NightLightView(nightLight: nightLight)
+        nightLightView.handleFullscreen()
         colors = nightLight.nightLightColors
 		super.init(nibName: nil, bundle: nil)
 	}
@@ -98,6 +99,7 @@ class NightLightViewController: UIViewController {
 	@objc func handleClose(_ sender: UITapGestureRecognizer) {
 		self.view.layoutIfNeeded()
         nightLightView.backgroundColor = colors[0]
+        nightLightView.handleClose()
 
 		UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 5, options: .curveEaseOut, animations: {
 

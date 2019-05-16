@@ -13,8 +13,16 @@ class NightLightView: UIView {
 
     let animalImageView = UIImageView()
     let nightLightId: Int
+    var stackView: UIStackView!
 
-    init(nightLight: NightLight) {
+    let controlView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+        view.alpha = 0.5
+        return view
+    }()
+
+    init(nightLight: NightLight, controlView: Bool = false) {
         nightLightId = nightLight.identifier
         super.init(frame: .zero)
 
@@ -47,7 +55,7 @@ class NightLightView: UIView {
         let playStackView = CustomStackView(arrangedSubviews: playView)
         playStackView.alignment = .center
 
-        let stackView = CustomStackView(arrangedSubviews: [topStackView, playStackView], axis: .vertical, distribution: .fillEqually)
+        stackView = CustomStackView(arrangedSubviews: [topStackView, playStackView], axis: .vertical, distribution: .fillEqually)
 
         addSubview(animalImageView)
         addSubview(stackView)
@@ -62,6 +70,23 @@ class NightLightView: UIView {
         } else {
             animalImageView.anchor(top: topAnchor, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor)
         }
+    }
+
+    func handleFullscreen() {
+        stackView.insertArrangedSubview(controlView, at: 1)
+        stackView.distribution = .fill
+        stackView.arrangedSubviews.last?.alpha = 0
+    }
+
+    func handleClose() {
+        stackView.distribution = .fillEqually
+
+        UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: {
+            self.stackView.arrangedSubviews[1].alpha = 0
+            self.stackView.arrangedSubviews.last?.alpha = 1
+        }, completion: { (_) in
+            self.stackView.removeArrangedSubview(self.controlView)
+        })
     }
 
     required init?(coder aDecoder: NSCoder) {
