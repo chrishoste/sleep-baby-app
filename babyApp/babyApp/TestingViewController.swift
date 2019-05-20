@@ -11,38 +11,25 @@ import UIKit
 
 class TestingViewController: UIViewController {
 
-    let view1: UIView = {
-        let view = UIView()
-        view.backgroundColor = .green
-        view.alpha = 0.5
-        return view
-    }()
-    let viewclear: UIView = {
-        let view = UIView()
-        view.backgroundColor = .blue
-        view.alpha = 0.5
-        return view
-    }()
-
-    let view2: UIView = {
-        let view = UIView()
-        view.backgroundColor = .green
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.constrainHeight(constant: 44)
-        view.constrainWidth(constant: 44)
-        return view
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .white
 
-        let stackView = CustomStackView(arrangedSubviews: [viewclear, Slider(), view1], axis: .vertical, distribution: .fillEqually)
-        view.addSubview(stackView)
-        stackView.backgroundColor = .purple
-        stackView.centerYInSuperview()
-        stackView.constrainHeight(constant: view.frame.width)
-        stackView.constrainWidth(constant: view.frame.width)
+        let slider = SliderControl()
+        slider.addTarget(self, action: #selector(handleValueChanged(_:)), for: .valueChanged)
+
+        view.addSubview(slider)
+        slider.centerInSuperview()
+
+        slider.constrainWidth(constant: view.frame.width)
+        slider.constrainHeight(constant: 44)
+
+        slider.setValue(0.5)
+    }
+
+    @objc
+    func handleValueChanged(_ slider: SliderControl) {
+        print(slider.getValue())
     }
 }

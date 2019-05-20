@@ -20,4 +20,8 @@ struct CustomColor {
 
     public static let nightLightSmallView1: UIColor = UIColor.init(hexString: "9294FF")
     public static let nightLightSmallView2: UIColor = UIColor.init(hexString: "FF9292")
+
+    public static let sliderTrackBar: UIColor = UIColor.init(hexString: "7D7D7D")
+    public static let sliderKnob: UIColor = UIColor.init(hexString: "DBDBDB")
+    public static let sliderTrack: UIColor = UIColor.init(hexString: "42B4CF")
 }
