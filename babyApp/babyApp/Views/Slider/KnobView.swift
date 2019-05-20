@@ -45,10 +45,10 @@ class KnobView: UIView {
 
     func setImage(forValue value: CGFloat) {
         if value <= 0 {
+            triggerVibration()
             guard let minImage = minImage else {
                 return
             }
-            triggerVibration()
             imageView.image = minImage
             return
         }

@@ -16,7 +16,8 @@ class TestingViewController: UIViewController {
 
         view.backgroundColor = .white
 
-        let slider = SliderControl()
+        let slider = SliderControl(minValue: 0, maxValue: 1)
+        slider.setImages(images: Data.brightnessSlider.images, minImage: nil)
         slider.addTarget(self, action: #selector(handleValueChanged(_:)), for: .valueChanged)
 
         view.addSubview(slider)
@@ -25,11 +26,12 @@ class TestingViewController: UIViewController {
         slider.constrainWidth(constant: view.frame.width)
         slider.constrainHeight(constant: 44)
 
-        slider.setValue(0.5)
+        slider.setValue(UIScreen.main.brightness)
     }
 
     @objc
     func handleValueChanged(_ slider: SliderControl) {
         print(slider.getValue())
+        UIScreen.main.brightness = slider.getValue()
     }
 }

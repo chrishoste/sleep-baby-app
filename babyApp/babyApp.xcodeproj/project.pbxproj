@@ -22,6 +22,7 @@
 		EA2D8734227F866B005C4186 /* NightLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2D8733227F866B005C4186 /* NightLightViewController.swift */; };
 		EA3C2065228C86B4002A183C /* NightLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3C2064228C86B4002A183C /* NightLight.swift */; };
 		EA3C2068228C86CF002A183C /* QuickSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3C2067228C86CF002A183C /* QuickSound.swift */; };
+		EA93041C22933E1400FAB350 /* SliderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA93041B22933E1400FAB350 /* SliderModel.swift */; };
 		EA9637F6228D79F9004DA966 /* BackgroundAnimalImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9637F5228D79F9004DA966 /* BackgroundAnimalImageView.swift */; };
 		EA9637F8228D9971004DA966 /* BackgroundMoonImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9637F7228D9971004DA966 /* BackgroundMoonImageView.swift */; };
 		EA9637FA228DCD74004DA966 /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9637F9228DCD74004DA966 /* TestingViewController.swift */; };
@@ -86,6 +87,7 @@
 		EA2D8733227F866B005C4186 /* NightLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightLightViewController.swift; sourceTree = "<group>"; };
 		EA3C2064228C86B4002A183C /* NightLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightLight.swift; sourceTree = "<group>"; };
 		EA3C2067228C86CF002A183C /* QuickSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSound.swift; sourceTree = "<group>"; };
+		EA93041B22933E1400FAB350 /* SliderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderModel.swift; sourceTree = "<group>"; };
 		EA9637F5228D79F9004DA966 /* BackgroundAnimalImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAnimalImageView.swift; sourceTree = "<group>"; };
 		EA9637F7228D9971004DA966 /* BackgroundMoonImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMoonImageView.swift; sourceTree = "<group>"; };
 		EA9637F9228DCD74004DA966 /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			children = (
 				EA3C2064228C86B4002A183C /* NightLight.swift */,
 				EA3C2067228C86CF002A183C /* QuickSound.swift */,
+				EA93041B22933E1400FAB350 /* SliderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA93041C22933E1400FAB350 /* SliderModel.swift in Sources */,
 				EA277184227F53E400016850 /* ViewController.swift in Sources */,
 				EA03E223228B0A8F00B24A9F /* Data.swift in Sources */,
 				EAD5BE1A2289BC5C00C38265 /* NightLightView.swift in Sources */,

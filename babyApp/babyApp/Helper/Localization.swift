@@ -30,4 +30,7 @@ public enum LocalizationKey: String {
     case nightLightDescription1
     case nightLightTitle2
     case nightLightDescription2
+
+    case sliderVolume
+    case sliderBrightness
 }

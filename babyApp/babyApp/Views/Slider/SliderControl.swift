@@ -11,8 +11,8 @@ import UIKit
 
 class SliderControl: UIControl {
 
-    var minimumValue: CGFloat = 1
-    var maximumValue: CGFloat = 20
+    var minimumValue: CGFloat
+    var maximumValue: CGFloat
     private var value: CGFloat = 5 {
         didSet {
             updateSlider()
@@ -33,7 +33,9 @@ class SliderControl: UIControl {
 
     let knobView = KnobView()
 
-    init() {
+    init(minValue: CGFloat, maxValue: CGFloat) {
+        minimumValue = minValue
+        maximumValue = maxValue
         super.init(frame: .zero)
         commitInit()
     }
@@ -55,9 +57,6 @@ class SliderControl: UIControl {
         trackView.centerInSuperview()
 
         trackView.isUserInteractionEnabled = false
-
-        knobView.images = [#imageLiteral(resourceName: "soundLow"), #imageLiteral(resourceName: "soundHigh"), #imageLiteral(resourceName: "soundMax")]
-        knobView.minImage = #imageLiteral(resourceName: "soundOut")
     }
 
     override func layoutSubviews() {
@@ -82,6 +81,11 @@ class SliderControl: UIControl {
         let newX = (value - minimumValue) / (maximumValue - minimumValue)
         knobView.setImage(forValue: boundValue(newX, toLowerValue: 0, upperValue: 1))
         return trackView.bounds.width * boundValue(newX, toLowerValue: 0, upperValue: 1)
+    }
+
+    func setImages(images: [UIImage]?, minImage: UIImage?) {
+        knobView.images = images
+        knobView.minImage = minImage
     }
 
     func setValue(_ value: CGFloat) {
