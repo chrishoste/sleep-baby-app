@@ -31,11 +31,7 @@ class SliderControl: UIControl {
         return view
     }()
 
-    let knobView: UIView = {
-        let view = UIView()
-        view.backgroundColor = CustomColor.sliderKnob
-        return view
-    }()
+    let knobView = KnobView()
 
     init() {
         super.init(frame: .zero)
@@ -59,6 +55,9 @@ class SliderControl: UIControl {
         trackView.centerInSuperview()
 
         trackView.isUserInteractionEnabled = false
+
+        knobView.images = [#imageLiteral(resourceName: "soundLow"), #imageLiteral(resourceName: "soundHigh"), #imageLiteral(resourceName: "soundMax")]
+        knobView.minImage = #imageLiteral(resourceName: "soundOut")
     }
 
     override func layoutSubviews() {
@@ -70,8 +69,6 @@ class SliderControl: UIControl {
 
         knobView.constrainWidth(constant: frame.height)
         knobView.constrainHeight(constant: frame.height)
-        knobView.layer.cornerRadius = frame.height / 2
-
     }
 
     func updateSlider() {
@@ -83,6 +80,7 @@ class SliderControl: UIControl {
     func position(for value: CGFloat) -> CGFloat {
         layoutIfNeeded()
         let newX = (value - minimumValue) / (maximumValue - minimumValue)
+        knobView.setImage(forValue: boundValue(newX, toLowerValue: 0, upperValue: 1))
         return trackView.bounds.width * boundValue(newX, toLowerValue: 0, upperValue: 1)
     }
 
@@ -115,7 +113,6 @@ extension SliderControl {
         // End something
     }
 
-    // 4
     private func boundValue(_ value: CGFloat, toLowerValue lowerValue: CGFloat, upperValue: CGFloat) -> CGFloat {
         return min(max(value, lowerValue), upperValue)
     }

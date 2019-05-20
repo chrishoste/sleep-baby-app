@@ -11,6 +11,8 @@
 		7E05BF7D5C0A87108FB19BB5 /* Pods_babyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E1A28C31DE3A7A65D6765F /* Pods_babyApp.framework */; };
 		E5A637322F1A305A6E7F51FC /* Pods_babyAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29D9F07AC60C042FBC357F1 /* Pods_babyAppTests.framework */; };
 		EA03E223228B0A8F00B24A9F /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA03E222228B0A8F00B24A9F /* Data.swift */; };
+		EA19083B2293284300CF63C9 /* KnobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA19083A2293284300CF63C9 /* KnobView.swift */; };
+		EA19083D2293366800CF63C9 /* Vibrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA19083C2293366800CF63C9 /* Vibrations.swift */; };
 		EA277182227F53E400016850 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA277181227F53E400016850 /* AppDelegate.swift */; };
 		EA277184227F53E400016850 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA277183227F53E400016850 /* ViewController.swift */; };
 		EA277189227F53E500016850 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA277188227F53E500016850 /* Assets.xcassets */; };
@@ -67,6 +69,8 @@
 		B406D3B5AA7110C3909EB9B8 /* Pods-babyAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-babyAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-babyAppUITests/Pods-babyAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D29D9F07AC60C042FBC357F1 /* Pods_babyAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_babyAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA03E222228B0A8F00B24A9F /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		EA19083A2293284300CF63C9 /* KnobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobView.swift; sourceTree = "<group>"; };
+		EA19083C2293366800CF63C9 /* Vibrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibrations.swift; sourceTree = "<group>"; };
 		EA27717E227F53E400016850 /* babyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = babyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA277181227F53E400016850 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA277183227F53E400016850 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				EA9637FC228DCE17004DA966 /* SliderControl.swift */,
+				EA19083A2293284300CF63C9 /* KnobView.swift */,
 			);
 			path = Slider;
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 				EAC6566A2280D0DA003DF5AE /* Localization.swift */,
 				EAA4F55522834EE80016C552 /* Constant.swift */,
 				EAD5BE172289B7FD00C38265 /* UIColor.swift */,
+				EA19083C2293366800CF63C9 /* Vibrations.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -522,9 +528,11 @@
 				EAD17DAE2281A31200211F42 /* ThumbSlidingView.swift in Sources */,
 				EA2D8734227F866B005C4186 /* NightLightViewController.swift in Sources */,
 				EA9637F6228D79F9004DA966 /* BackgroundAnimalImageView.swift in Sources */,
+				EA19083B2293284300CF63C9 /* KnobView.swift in Sources */,
 				EA277182227F53E400016850 /* AppDelegate.swift in Sources */,
 				EA9637FD228DCE17004DA966 /* SliderControl.swift in Sources */,
 				EAD17DAB22819CB400211F42 /* SlideUpMenuController.swift in Sources */,
+				EA19083D2293366800CF63C9 /* Vibrations.swift in Sources */,
 				EAD5BE1C2289BE3600C38265 /* PlayView.swift in Sources */,
 				EAA4F55622834EE80016C552 /* Constant.swift in Sources */,
 				EA3C2065228C86B4002A183C /* NightLight.swift in Sources */,
