@@ -72,7 +72,6 @@ class NightLightView: UIView {
 
     func handleFullscreen() {
         setupControlPanel()
-        //stackView.insertArrangedSubview(controlView, at: 1)
         stackView.distribution = .fill
         stackView.arrangedSubviews.last?.alpha = 0
     }
@@ -84,8 +83,9 @@ class NightLightView: UIView {
             self.stackView.arrangedSubviews[1].alpha = 0
             self.stackView.arrangedSubviews.last?.alpha = 1
             self.moonImageView.transform = .identity
+            self.controlPanel.alpha = 0
         }, completion: { (_) in
-            //self.stackView.removeArrangedSubview(self.controlView)
+            self.controlPanel.removeFromSuperview()
         })
     }
 
