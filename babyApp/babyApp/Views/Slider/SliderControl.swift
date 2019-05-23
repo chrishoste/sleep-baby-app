@@ -11,6 +11,7 @@ import UIKit
 
 class SliderControl: UIControl {
 
+    var trackWidth: NSLayoutConstraint?
     var minimumValue: CGFloat
     var maximumValue: CGFloat
     private var value: CGFloat = 5 {
@@ -51,21 +52,30 @@ class SliderControl: UIControl {
 
         addSubview(trackView)
 
-        trackView.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 64, bottom: 0, right: 64))
+        //trackView.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 64, bottom: 0, right: 64))
+        trackWidth = trackView.widthAnchor.constraint(equalToConstant: 0)
+        trackWidth?.isActive = true
         trackView.centerInSuperview()
 
         trackView.isUserInteractionEnabled = false
+
+        layoutIfNeeded()
+        knobView.constrainWidth(constant: 44)
+        knobView.constrainHeight(constant: 44)
+
+        trackView.constrainHeight(constant: 44*0.55)
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        if frame.width > 128 {
+            trackWidth?.constant = frame.width - 128
+        } else {
+            trackWidth?.constant = frame.width
+        }
 
-        trackView.constrainHeight(constant: frame.height*0.55)
         trackView.layer.cornerRadius = (frame.height*0.55)/5
         coloredTrackView.layer.cornerRadius = trackView.layer.cornerRadius
-
-        knobView.constrainWidth(constant: frame.height)
-        knobView.constrainHeight(constant: frame.height)
     }
 
     func updateSlider() {

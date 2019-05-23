@@ -18,12 +18,9 @@ class NightLightView: UIView {
 
     private var stackView: UIStackView!
 
-    private let controlView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        view.alpha = 0
-        return view
-    }()
+    private lazy var controlPanel = UIView()
+    private var slider: SliderControl?
+    private var slider2: SliderControl?
 
     init(nightLight: NightLight, clipped: Bool = true) {
         nightLightId = nightLight.identifier
@@ -47,6 +44,9 @@ class NightLightView: UIView {
             animalImageView.size = frame.height
             moonImageView.size = frame.height
         }
+
+        slider?.setValue(UIScreen.main.brightness)
+        slider2?.setValue(1)
     }
 
     fileprivate func setupView(_ nightLight: NightLight) {
@@ -71,7 +71,8 @@ class NightLightView: UIView {
     }
 
     func handleFullscreen() {
-        stackView.insertArrangedSubview(controlView, at: 1)
+        setupControlPanel()
+        //stackView.insertArrangedSubview(controlView, at: 1)
         stackView.distribution = .fill
         stackView.arrangedSubviews.last?.alpha = 0
     }
@@ -84,8 +85,36 @@ class NightLightView: UIView {
             self.stackView.arrangedSubviews.last?.alpha = 1
             self.moonImageView.transform = .identity
         }, completion: { (_) in
-            self.stackView.removeArrangedSubview(self.controlView)
+            //self.stackView.removeArrangedSubview(self.controlView)
         })
+    }
+
+    func setupControlPanel() {
+
+        slider = SliderControl(minValue: 0, maxValue: 1)
+        slider2 = SliderControl(minValue: 0, maxValue: 1)
+
+        guard let slider = slider, let slider2 = slider2 else {
+            return
+        }
+
+        addSubview(controlPanel)
+        controlPanel.centerInSuperview()
+        controlPanel.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor)
+        controlPanel.addSubview(slider)
+
+        slider.setImages(images: Data.brightnessSlider.images, minImage: nil)
+        slider2.setImages(images: Data.brightnessSlider.images, minImage: nil)
+
+        //view.addSubview(slider)
+
+        //slider.anchor(top: controlPanel.topAnchor, leading: controlPanel.leadingAnchor, bottom: controlPanel.bottomAnchor, trailing: controlPanel.trailingAnchor)
+        slider.constrainHeight(constant: 44)
+        slider2.constrainHeight(constant: 44)
+
+        let stackView = CustomStackView(arrangedSubviews: [UIView(), slider, slider2], axis: .vertical, spacing: 16, distribution: .fill)
+        controlPanel.addSubview(stackView)
+        stackView.fillSuperview()
     }
 
     required init?(coder aDecoder: NSCoder) {
