@@ -21,7 +21,7 @@ class SliderControl: UIControl {
 
     let coloredTrackView: UIView = {
         let view = UIView()
-        view.backgroundColor = CustomColor.sliderTrack
+        view.backgroundColor = CustomColor.sliderTrackBlue
         return view
     }()
 
@@ -45,8 +45,6 @@ class SliderControl: UIControl {
     }
 
     func commitInit() {
-        backgroundColor = .white
-
         trackView.addSubview(coloredTrackView)
         trackView.addSubview(knobView)
         coloredTrackView.anchor(top: trackView.topAnchor, leading: trackView.leadingAnchor, bottom: trackView.bottomAnchor, trailing: nil)
