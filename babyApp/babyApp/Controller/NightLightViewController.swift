@@ -29,10 +29,9 @@ class NightLightViewController: UIViewController {
 
 	weak var delegate: NightLightViewControllerDelegate?
 
-    private lazy var controlPanelTitel = BigLabel(key: .titleSettings)
     private lazy var controlPanel: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         view.alpha = 0
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnOverlay(_:)))
         tapGesture.delegate = self
@@ -180,18 +179,17 @@ class NightLightViewController: UIViewController {
         volumeSlider.addTarget(self, action: #selector(handleSliderChange(_:)), for: .valueChanged)
 
         view.addSubview(controlPanel)
-        controlPanel.mask = controlPanelTitel
 
         controlPanel.fillSuperview()
         controlPanel.addSubview(brightnessSlider)
 
         brightnessSlider.setImages(images: Data.brightnessSlider.images, minImage: nil)
         volumeSlider.setImages(images: Data.volumeSlider.images, minImage: Data.volumeSlider.minImage)
-        
+
         brightnessSlider.constrainHeight(constant: 44)
         volumeSlider.constrainHeight(constant: 44)
 
-        let titleStackView = UIStackView(arrangedSubviews: [controlPanelTitel])
+        let titleStackView = UIStackView(arrangedSubviews: [BigLabel(key: .titleSettings)])
         titleStackView.isLayoutMarginsRelativeArrangement = true
         titleStackView.layoutMargins = .init(top: 0, left: 64, bottom: 0, right: 64)
 
