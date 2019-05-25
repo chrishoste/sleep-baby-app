@@ -29,6 +29,16 @@ class NightLightViewController: UIViewController {
 
 	weak var delegate: NightLightViewControllerDelegate?
 
+    private lazy var controlPanel: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        view.alpha = 0
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnOverlay(_:)))
+        tapGesture.delegate = self
+        view.addGestureRecognizer(tapGesture)
+        return view
+    }()
+
     init(frame: CGRect, nightLight: NightLight) {
 		smallViewFrame = frame
         nightLightView = NightLightView(nightLight: nightLight, clipped: false)
@@ -92,11 +102,14 @@ class NightLightViewController: UIViewController {
 			self.view.layoutIfNeeded() // starts animation
 
         }, completion: { (_) in
+            self.showControlPanel()
             self.showCloseButton()
         })
 	}
 
 	@objc private func handleClose(_ sender: UIButton) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+        hideControlPanel(animated: false)
         sender.removeFromSuperview()
 		self.view.layoutIfNeeded()
         nightLightView.backgroundColor = colors[0]
@@ -158,7 +171,104 @@ class NightLightViewController: UIViewController {
         })
     }
 
+    private func showControlPanel() {
+
+        let brightnessSlider = SliderControl(minValue: 0, maxValue: 1)
+        brightnessSlider.addTarget(self, action: #selector(handleSliderChange(_:)), for: .valueChanged)
+        let volumeSlider = SliderControl(minValue: 0, maxValue: 1)
+        volumeSlider.addTarget(self, action: #selector(handleSliderChange(_:)), for: .valueChanged)
+
+        view.addSubview(controlPanel)
+        controlPanel.sendSubviewToBack(view)
+        snapView.sendSubviewToBack(view)
+
+        controlPanel.fillSuperview()
+        controlPanel.addSubview(brightnessSlider)
+
+        brightnessSlider.setImages(images: Data.brightnessSlider.images, minImage: nil)
+        volumeSlider.setImages(images: Data.volumeSlider.images, minImage: Data.volumeSlider.minImage)
+
+        //view.addSubview(slider)
+
+        //slider.anchor(top: controlPanel.topAnchor, leading: controlPanel.leadingAnchor, bottom: controlPanel.bottomAnchor, trailing: controlPanel.trailingAnchor)
+        brightnessSlider.constrainHeight(constant: 44)
+        volumeSlider.constrainHeight(constant: 44)
+
+        let stackView = CustomStackView(arrangedSubviews: [brightnessSlider, volumeSlider], axis: .vertical, spacing: 16, distribution: .fill)
+        controlPanel.addSubview(stackView)
+        stackView.centerInSuperview()
+        stackView.anchor(top: nil, leading: controlPanel.leadingAnchor, bottom: nil, trailing: controlPanel.trailingAnchor)
+
+        controlPanel.layoutIfNeeded()
+        brightnessSlider.setValue(UIScreen.main.brightness)
+        volumeSlider.setValue(1)
+
+        UIView.animate(withDuration: 0.25, animations: {
+            self.controlPanel.alpha = 1
+        }) { (_) in
+            self.perform(#selector(self.hideControlPanel), with: nil, afterDelay: 2.5, inModes: [.default])
+        }
+    }
+
+    @objc
+    private func hideControlPanel(animated: Bool = true) {
+        if !animated {
+            controlPanel.subviews.forEach({$0.removeFromSuperview()})
+            controlPanel.removeFromSuperview()
+            return
+        }
+
+        UIView.animate(withDuration: 0.25, animations: {
+            self.controlPanel.alpha = 0
+        }) { (_) in
+            self.controlPanel.subviews.forEach({$0.removeFromSuperview()})
+            self.controlPanel.removeFromSuperview()
+        }
+    }
+
+    @objc
+    private func handleSliderChange(_ slider: SliderControl) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+        perform(#selector(self.hideControlPanel), with: nil, afterDelay: 2.5, inModes: [.default])
+    }
+
+    @objc
+    private func tapOnOverlay(_ gesture: UITapGestureRecognizer) {
+        hideControlPanel(animated: true)
+    }
+
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+}
+
+extension NightLightViewController {
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+
+        if controlPanel.superview == nil {
+            showControlPanel()
+        } else {
+            controlPanel.alpha = 1
+        }
+
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+
+        perform(#selector(self.hideControlPanel), with: nil, afterDelay: 2.5, inModes: [.default])
+    }
+}
+
+extension NightLightViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view != controlPanel {
+            return false
+        }
+
+        return true
+    }
 }
