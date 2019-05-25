@@ -29,6 +29,7 @@ class NightLightViewController: UIViewController {
 
 	weak var delegate: NightLightViewControllerDelegate?
 
+    private lazy var controlPanelTitel = BigLabel(key: .titleSettings)
     private lazy var controlPanel: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
@@ -179,22 +180,22 @@ class NightLightViewController: UIViewController {
         volumeSlider.addTarget(self, action: #selector(handleSliderChange(_:)), for: .valueChanged)
 
         view.addSubview(controlPanel)
-        controlPanel.sendSubviewToBack(view)
-        snapView.sendSubviewToBack(view)
+        controlPanel.mask = controlPanelTitel
 
         controlPanel.fillSuperview()
         controlPanel.addSubview(brightnessSlider)
 
         brightnessSlider.setImages(images: Data.brightnessSlider.images, minImage: nil)
         volumeSlider.setImages(images: Data.volumeSlider.images, minImage: Data.volumeSlider.minImage)
-
-        //view.addSubview(slider)
-
-        //slider.anchor(top: controlPanel.topAnchor, leading: controlPanel.leadingAnchor, bottom: controlPanel.bottomAnchor, trailing: controlPanel.trailingAnchor)
+        
         brightnessSlider.constrainHeight(constant: 44)
         volumeSlider.constrainHeight(constant: 44)
 
-        let stackView = CustomStackView(arrangedSubviews: [brightnessSlider, volumeSlider], axis: .vertical, spacing: 16, distribution: .fill)
+        let titleStackView = UIStackView(arrangedSubviews: [controlPanelTitel])
+        titleStackView.isLayoutMarginsRelativeArrangement = true
+        titleStackView.layoutMargins = .init(top: 0, left: 64, bottom: 0, right: 64)
+
+        let stackView = CustomStackView(arrangedSubviews: [titleStackView, brightnessSlider, volumeSlider], axis: .vertical, spacing: 16, distribution: .fill)
         controlPanel.addSubview(stackView)
         stackView.centerInSuperview()
         stackView.anchor(top: nil, leading: controlPanel.leadingAnchor, bottom: nil, trailing: controlPanel.trailingAnchor)
@@ -206,11 +207,15 @@ class NightLightViewController: UIViewController {
         UIView.animate(withDuration: 0.25, animations: {
             self.controlPanel.alpha = 1
         }) { (_) in
-            self.perform(#selector(self.hideControlPanel), with: nil, afterDelay: 2.5, inModes: [.default])
+            self.perform(#selector(self.hideControlPanelAnimated), with: nil, afterDelay: 2.5, inModes: [.default])
         }
     }
 
     @objc
+    private func hideControlPanelAnimated() {
+        hideControlPanel(animated: true)
+    }
+
     private func hideControlPanel(animated: Bool = true) {
         if !animated {
             controlPanel.subviews.forEach({$0.removeFromSuperview()})
@@ -229,7 +234,7 @@ class NightLightViewController: UIViewController {
     @objc
     private func handleSliderChange(_ slider: SliderControl) {
         NSObject.cancelPreviousPerformRequests(withTarget: self)
-        perform(#selector(self.hideControlPanel), with: nil, afterDelay: 2.5, inModes: [.default])
+        perform(#selector(self.hideControlPanelAnimated), with: nil, afterDelay: 2.5, inModes: [.default])
     }
 
     @objc
@@ -259,7 +264,7 @@ extension NightLightViewController {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
 
-        perform(#selector(self.hideControlPanel), with: nil, afterDelay: 2.5, inModes: [.default])
+        perform(#selector(self.hideControlPanelAnimated), with: nil, afterDelay: 2.5, inModes: [.default])
     }
 }
 

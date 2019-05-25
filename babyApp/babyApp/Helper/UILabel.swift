@@ -62,3 +62,18 @@ class NightLightDescriptionLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+class BigLabel: UILabel {
+
+    init(key: LocalizationKey) {
+        super.init(frame: .zero)
+        self.text = localized(key)
+        self.font = UIFont.systemFont(ofSize: 32, weight: .heavy)
+        self.numberOfLines = 1
+        self.textColor = .white
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
