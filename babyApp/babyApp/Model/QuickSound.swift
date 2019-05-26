@@ -7,7 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 struct QuickSound {
     let identifier: Int
+    let title: LocalizationKey
+    let color: UIColor
+    let image: UIImage
 }

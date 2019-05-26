@@ -17,6 +17,15 @@ class ThumbSlidingView: UIView {
 
     init() {
         super.init(frame: .zero)
+        commitInit()
+    }
+
+    private func commitInit() {
+        setupView()
+    }
+
+    private func setupView() {
+        backgroundColor = .white
         layer.cornerRadius = 3
         backgroundColor = UIColor(white: 0, alpha: 0.2)
         clipsToBounds = true

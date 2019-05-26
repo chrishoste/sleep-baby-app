@@ -12,7 +12,6 @@ import UIKit
 class BackgroundAnimalImageView: UIImageView {
 
     private var identifier: Int
-
     private var imageHeight: NSLayoutConstraint!
     private var imageWidth: NSLayoutConstraint!
 
@@ -26,14 +25,7 @@ class BackgroundAnimalImageView: UIImageView {
     init(nightLight: NightLight) {
         identifier = nightLight.identifier
         super.init(frame: .zero)
-        image = nightLight.image
-        contentMode = .scaleAspectFit
-        translatesAutoresizingMaskIntoConstraints = false
-
-        imageWidth = widthAnchor.constraint(equalToConstant: size)
-        imageWidth.isActive = true
-        imageHeight = heightAnchor.constraint(equalToConstant: size)
-        imageHeight.isActive = true
+        commitInit(nightLight)
     }
 
     override func didMoveToSuperview() {
@@ -43,6 +35,21 @@ class BackgroundAnimalImageView: UIImageView {
         } else {
             self.anchor(top: nil, leading: nil, bottom: superview?.bottomAnchor, trailing: superview?.trailingAnchor)
         }
+    }
+
+    private func commitInit(_ nightLight: NightLight) {
+        setupView(nightLight.image)
+    }
+
+    private func setupView(_ image: UIImage) {
+        self.image = image
+        contentMode = .scaleAspectFit
+        translatesAutoresizingMaskIntoConstraints = false
+
+        imageWidth = widthAnchor.constraint(equalToConstant: size)
+        imageWidth.isActive = true
+        imageHeight = heightAnchor.constraint(equalToConstant: size)
+        imageHeight.isActive = true
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -11,6 +11,7 @@
 		7E05BF7D5C0A87108FB19BB5 /* Pods_babyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E1A28C31DE3A7A65D6765F /* Pods_babyApp.framework */; };
 		E5A637322F1A305A6E7F51FC /* Pods_babyAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29D9F07AC60C042FBC357F1 /* Pods_babyAppTests.framework */; };
 		EA03E223228B0A8F00B24A9F /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA03E222228B0A8F00B24A9F /* Data.swift */; };
+		EA049C58229AEC1700715F54 /* QuickSoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA049C57229AEC1700715F54 /* QuickSoundView.swift */; };
 		EA19083B2293284300CF63C9 /* KnobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA19083A2293284300CF63C9 /* KnobView.swift */; };
 		EA19083D2293366800CF63C9 /* Vibrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA19083C2293366800CF63C9 /* Vibrations.swift */; };
 		EA277182227F53E400016850 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA277181227F53E400016850 /* AppDelegate.swift */; };
@@ -70,6 +71,7 @@
 		B406D3B5AA7110C3909EB9B8 /* Pods-babyAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-babyAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-babyAppUITests/Pods-babyAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D29D9F07AC60C042FBC357F1 /* Pods_babyAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_babyAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA03E222228B0A8F00B24A9F /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		EA049C57229AEC1700715F54 /* QuickSoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSoundView.swift; sourceTree = "<group>"; };
 		EA19083A2293284300CF63C9 /* KnobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobView.swift; sourceTree = "<group>"; };
 		EA19083C2293366800CF63C9 /* Vibrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibrations.swift; sourceTree = "<group>"; };
 		EA27717E227F53E400016850 /* babyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = babyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,6 +292,7 @@
 				EAD17DAD2281A31200211F42 /* ThumbSlidingView.swift */,
 				EAD5BE192289BC5C00C38265 /* NightLightView.swift */,
 				EAD5BE1B2289BE3600C38265 /* PlayView.swift */,
+				EA049C57229AEC1700715F54 /* QuickSoundView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				EAC656602280CB89003DF5AE /* UILabel.swift in Sources */,
 				EAC6565A2280BA7E003DF5AE /* UIView+Layout.swift in Sources */,
 				EA9637FA228DCD74004DA966 /* TestingViewController.swift in Sources */,
+				EA049C58229AEC1700715F54 /* QuickSoundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

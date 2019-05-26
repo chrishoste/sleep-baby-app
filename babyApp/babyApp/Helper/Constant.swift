@@ -24,4 +24,6 @@ struct CustomColor {
     public static let sliderTrackBar: UIColor = UIColor.init(hexString: "7D7D7D")
     public static let sliderKnob: UIColor = UIColor.init(hexString: "DBDBDB")
     public static let sliderTrackBlue: UIColor = UIColor.init(hexString: "42B4CF")
+
+    public static let quickSoundBackgroundBlue: UIColor = UIColor.init(hexString: "158DD4")
 }

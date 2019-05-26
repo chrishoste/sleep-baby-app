@@ -93,12 +93,8 @@ class ViewController: UIViewController {
 	private func generateQuickSoundViews(_ sounds: [QuickSound]) -> [UIView] {
 		var views: [UIView] = []
 
-        sounds.forEach { (_) in
-            let soundView = UIView()
-            views.append(soundView)
-            soundView.layer.cornerRadius = 10
-            soundView.backgroundColor = .lightGray
-            views.append(soundView)
+        sounds.forEach { (sound) in
+            views.append(QuickSoundView(quickSound: sound))
         }
 
 		return views

@@ -12,7 +12,6 @@ import UIKit
 class BackgroundMoonImageView: UIImageView {
 
     private var identifier: Int
-
     private var imageHeight: NSLayoutConstraint!
     private var imageWidth: NSLayoutConstraint!
 
@@ -26,14 +25,7 @@ class BackgroundMoonImageView: UIImageView {
     init(nightLight: NightLight) {
         identifier = nightLight.identifier
         super.init(frame: .zero)
-        image = identifier.isMultiple(of: 2) ? #imageLiteral(resourceName: "moonL") : #imageLiteral(resourceName: "moonR")
-        contentMode = .scaleAspectFit
-        translatesAutoresizingMaskIntoConstraints = false
-
-        imageWidth = widthAnchor.constraint(equalToConstant: size)
-        imageWidth.isActive = true
-        imageHeight = heightAnchor.constraint(equalToConstant: size)
-        imageHeight.isActive = true
+        commitInit()
     }
 
     override func didMoveToSuperview() {
@@ -43,6 +35,21 @@ class BackgroundMoonImageView: UIImageView {
         } else {
             self.anchor(top: superview?.topAnchor, leading: nil, bottom: nil, trailing: superview?.trailingAnchor)
         }
+    }
+
+    private func commitInit() {
+        setupView()
+    }
+
+    private func setupView() {
+        image = identifier.isMultiple(of: 2) ? #imageLiteral(resourceName: "moonL") : #imageLiteral(resourceName: "moonR")
+        contentMode = .scaleAspectFit
+        translatesAutoresizingMaskIntoConstraints = false
+
+        imageWidth = widthAnchor.constraint(equalToConstant: size)
+        imageWidth.isActive = true
+        imageHeight = heightAnchor.constraint(equalToConstant: size)
+        imageHeight.isActive = true
     }
 
     required init?(coder aDecoder: NSCoder) {
