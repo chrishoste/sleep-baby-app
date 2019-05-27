@@ -29,8 +29,8 @@ class QuickSoundView: UIView {
     private func setupSubviews(_ quickSound: QuickSound) {
         let imageView = UIImageView()
         imageView.image = quickSound.image
-        imageView.contentMode = .scaleAspectFit
-        let stackView = CustomStackView(arrangedSubviews: [imageView, UIStackView(arrangedSubviews: [PlayView(color: quickSound.color), UIView()]), UIView()], axis: .vertical, spacing: 8, distribution: .fill)
+        imageView.contentMode = .center
+        let stackView = CustomStackView(arrangedSubviews: [imageView, UIView(), UIStackView(arrangedSubviews: [PlayView(color: quickSound.color), UIView()])], axis: .vertical, spacing: 8, distribution: .fill)
 
         addSubview(stackView)
         stackView.fillSuperview(padding: .init(top: 8, left: 8, bottom: 8, right: 8))
