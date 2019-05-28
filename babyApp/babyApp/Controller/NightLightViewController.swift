@@ -109,6 +109,7 @@ class NightLightViewController: UIViewController {
 
 	@objc private func handleClose(_ sender: UIButton) {
         NSObject.cancelPreviousPerformRequests(withTarget: self)
+        controlPanel.gestureRecognizers?.forEach({controlPanel.removeGestureRecognizer($0)})
         hideControlPanel(animated: false)
         sender.removeFromSuperview()
 		self.view.layoutIfNeeded()
