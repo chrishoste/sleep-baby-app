@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  babyApp
+
+  Created by Christophe Hoste on 06.05.19.
+  Copyright © 2019 hoste. All rights reserved.
+*/
+
+"done" = "Fertig";
+"ok" = "Ok";
+"yes" = "Ja";
+"no" = "Nein";
+
+"titleSettings" = "Einstellungen";
+
+"titleBabyApp" = "Baby App Deutsch";
+"titleNightLightSound" = "Melodie & Nachtlicht";
+"titleQuickSound" = "Alltagsgeräusche";
+
+"quickSoundShower" = "Dusche";
+"quickSoundVacuum" = "Staubsauger";
+"quickSoundWashingMachine" = "Waschmaschine";
+
+"nightLightTitle1" = "Melodie 1";
+"nightLightDescription1" = "Melodie 1 mit coolen lichtern";
+"nightLightTitle2" = "Melodie 2";
+"nightLightDescription2" = "Melodie 2 mit coolen lichtern";
+
+"sliderVolume" = "Lautstärke";
+"sliderBrightness" = "Helligkeit";

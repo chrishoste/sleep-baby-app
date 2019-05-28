@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  babyApp
+
+  Created by Christophe Hoste on 06.05.19.
+  Copyright © 2019 hoste. All rights reserved.
+*/
+
+"done" = "Done";
+"ok" = "Ok";
+"yes" = "Yes";
+"no" = "No";
+
+"titleSettings" = "Settings";
+
+"titleBabyApp" = "Baby App English";
+"titleNightLightSound" = "Melody & night light";
+"titleQuickSound" = "Everyday sounds";
+
+"quickSoundShower" = "Shower";
+"quickSoundVacuum" = "Vacuum";
+"quickSoundWashingMachine" = "Washer";
+
+"nightLightTitle1" = "Melody 1";
+"nightLightDescription1" = "Melody 1 with fancy lights";
+"nightLightTitle2" = "Melody 2";
+"nightLightDescription2" = "Melody 2 with fancy lights";
+
+"sliderVolume" = "Volume";
+"sliderBrightness" = "Brightness";

@@ -1,0 +1,6 @@
+framework module Pods_babyApp {
+  umbrella header "Pods-babyApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
