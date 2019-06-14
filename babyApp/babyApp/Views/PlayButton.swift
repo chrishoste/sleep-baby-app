@@ -44,7 +44,6 @@ class PlayButton: UIView {
 
     private func setupView() {
         backgroundColor = .white
-        layer.borderWidth = 2
         translatesAutoresizingMaskIntoConstraints = false
         height = heightAnchor.constraint(equalToConstant: 0)
         height?.isActive = true
@@ -72,7 +71,6 @@ class PlayButton: UIView {
     }
 
     private func setColor() {
-        layer.borderColor = color.cgColor
         imageView?.tintColor = color
     }
 

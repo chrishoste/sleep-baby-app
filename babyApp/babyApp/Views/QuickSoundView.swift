@@ -38,6 +38,10 @@ class QuickSoundView: UIView {
 
     private func setupSubviews(_ quickSound: QuickSound) {
 
+        let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "shower")
+        imageView.contentMode = .scaleAspectFit
+
         let bottomView = UIView()
         bottomView.backgroundColor = .white
 
@@ -60,6 +64,9 @@ class QuickSoundView: UIView {
 
         addSubview(bottomView)
         bottomView.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor)
+
+        addSubview(imageView)
+        imageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomView.topAnchor, trailing: trailingAnchor)
     }
 
     required init?(coder aDecoder: NSCoder) {
