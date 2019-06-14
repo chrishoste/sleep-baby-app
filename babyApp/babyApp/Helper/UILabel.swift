@@ -14,6 +14,7 @@ class SubLabel: UILabel {
 	init(key: LocalizationKey) {
 		super.init(frame: .zero)
 		self.text = localized(key)
+        constrainHeight(constant: 21)
 	}
 
 	required init?(coder aDecoder: NSCoder) {

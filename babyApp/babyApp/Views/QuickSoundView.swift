@@ -20,7 +20,7 @@ class QuickSoundView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        playButton.size = frame.height*0.25
+        playButton.size = frame.height*0.15
     }
 
     private func commitInit(_ quickSound: QuickSound) {
@@ -66,7 +66,8 @@ class QuickSoundView: UIView {
         bottomView.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor)
 
         addSubview(imageView)
-        imageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomView.topAnchor, trailing: trailingAnchor)
+        imageView.anchor(top: topAnchor, leading: nil, bottom: bottomView.topAnchor, trailing: nil)
+        imageView.centerXInSuperview()
     }
 
     required init?(coder aDecoder: NSCoder) {
